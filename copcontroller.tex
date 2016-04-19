@@ -139,10 +139,6 @@ Debrecen
 \section{Robotautók}
 \label{robocars}
 
-A korábbi években igen sok fejlődés tapasztalható az autógyártásban, elsősorban az autonóm autók kapcsán. Egyre több autógyártó és techóriás fejleszt robotautót, mint például a területen úttörő Google (a fejlesztett autó a \ref{googleauto}. képen látható) vagy a Volkswagen cégcsoport, de a Tesla elektromos autó gyártó termékei is egyre inkább önjáróak. Ezek a trendek folyamatosan gyorsulni látszanak. A 2000-es és 2010-es éveket főként az autókba épített, vezetőt segítő elektronikai eszközök uralták (úgymint a gyalogosfigyelő rendszerek, sávelhagyásra figyelmeztető rendszerek, stb.), a 2020-as éveket várhatóan az autonóm autók széleskörű elterjedése fogja meghatározni. Ezek mellett a tisztán elektromos hajtású, valamint 2015-től a piacon is elérhető hidrogénhajtású autók is egyre szélesebb körben elérhetőek.
-\vspace{2mm}
-Világosan látható, hogy az autóipar paradigmaváltás előtt áll. A vezetői élmény jelentősége és a fosszilis energiaforrásokon alapú hajtásláncok folyamatosan visszaszorulnak, helyettük a hosszú távon is fenntartható, környezetbarát, az utazást, mint pihentető, emberbarát eseményt vizionáló megoldások kerülnek a figyelem középpontjába.
-
 \begin{figure}[h]
 \centerline{
 \includegraphics[width=6in]{img/googleauto}}
@@ -150,19 +146,12 @@ Világosan látható, hogy az autóipar paradigmaváltás előtt áll. A vezető
 \label{googleauto}
 \end{figure}
 
-\vspace{2mm}
-A két terület találkozási pontja egyértelmű: egy teljesen ésszerű elképzelés, hogy a már most is fejlett elektronikával szerelt autóknak a város adjon útvonalat. Ugyanis a városnak rendelkezésére állhat minden olyan információ, amellyel az utazás optimálissá, gazdaságosabbá, gyorsabbá tehető. Ilyen információk az útlezárások, felújítások, elterelések, vagy például ritka események, balesetek. 
+TODO
 
 \section{Okos városok}
 \label{smartcities}
 
-2050-re a világ lakosságának 70\%-a várhatóan városokban fog élni \cite{unpopulation}. Ez a nagy mértékű urbanizáció új kihívások elé állítja a városi infrastruktúrát. Hogyan kezelhető egy ekkora méretű népesség? Milyen szolgáltatásokat nyújtson a városi adminisztráció annak érdekében, hogy élhető maradjon a város? Többek között ezekre a kérdésekre ad választ a Smart City kutatási terület, melynek megoldásai az utóbbi években kezdenek egyre inkább a mindennapok részévé válni. Kiemelten fontos problémakör lehet (és részben már most is az) a városi közlekedés. Egyre többen használják a városi infrastruktúrát, így a városi úthálózatot is. Milyen alkalmazást tud nyújtani a városi menedzsment, hogy a lakosok optimális módon tudjanak közlekedni? Erre a kérdésre adhat választ az okos közlekedés menedzsment (Smart traffic management).
-
-\vspace{2mm}
-Az Okos Város kutatási, fejlesztési terület jelentős szerepet fog játszani az következő évtizedekben. Előrejelzések szerint 2023-ig több mint 170 milliárd dollár beruházás fog megvalósulni világszerte \cite{navigant}. A különböző informatikai megoldások egyre nagyobb számban vannak jelen a hétköznapokban már napjainkban is, mint például a VITAL \cite{vital}, a FI\-Ware \cite{fiware} vagy az iCity \cite{icity}. Ezen felül egyre több kezdeményezés tesz kísérletet arra, hogy a városi lakosság hétköznapjait okosabbá és biztonságosabbá tegye (\cite{smartsantander}, \cite{futureglasgow}, \cite{myneighbourhood}). Emellett sok tanulmány foglalkozik a smart city fogalomkörével, illetve hogyan mérhető egy város ``okossága'' (\cite{yamauchi2014development}, \cite{neirotti2014current}, \cite{de2014smart}, \cite{carli2013measuring}). A vészhelyzetek kezelése is kiemelt szerepet kap (például \cite{du2012research}).
-
-\vspace{2mm}
-Látható, hogy a Smart City kutatási, fejlesztési terület lassan iparággá növi ki magát, mindenképpen komoly jövő előtt áll.
+TODO
 
 
 \chapter{A Robocar World Championship (OOCWC)}
@@ -170,7 +159,7 @@ Látható, hogy a Smart City kutatási, fejlesztési terület lassan iparággá 
 
 \section{Ismerkedés az OOCWC rendszerrel}
 
-Az OOCWC rendszer célja, hogy az autonóm autók és az okos városok közötti összefüggéseket vizsgálja, kutatási valamint oktatási platform. A rendszer felépítését a \ref{basedesign}. ábra szemlélteti.
+Az OOCWC rendszer célja, hogy az autonóm autók és az okos városok közötti összefüggéseket vizsgálja, kutatási valamint oktatási célokat is szolgál. A rendszer felépítését a 2.1. ábra szemlélteti.
 
 \begin{figure}[h]
 \centerline{
@@ -183,10 +172,10 @@ Ez alapján a rendszer egyes elemei:
 
 \begin{itemize}
 \item Map -- a szimuláció egy adott térképen értelmezett,
-\item City -- a szimuláció működési egysége (City Operating Area),
-\item The competition -- a verseny célja, illetve maga a verseny,
-\item ASA -- automatikus adatgyűjtő rendszer (crowd-sensing),
-\item HSA -- kézi adatgyűjtő rendszer (crowd-sourcing),
+\item City -- a szimuláció működési egysége,
+\item The competition -- a verseny célja / maga a verseny,
+\item ASA -- automatikus adatgyűjtő rendszer,
+\item HSA -- kézi adatgyűjtő rendszer,
 \item Robocar City Emulator -- forgalom emuláció,
 \item Results -- a verseny eredményei, illetve kísérletek eredményei,
 \item Monitors -- megjelenítők, vizualizáció.
@@ -195,35 +184,69 @@ Ez alapján a rendszer egyes elemei:
 A rendszer többcélú. Egyrészt egy kutatási platformot kínál forgalomelemzésre, szimulációkra. A szimuláció az OpenStreetMap \cite{osm} térképein fut. 
 
 \vspace{2mm}
-A rendszer másik célja, hogy egy verseny segítségével találjuk meg a lehető legjobb forgalomirányító algoritmust. A rendszer készítői már több sikeres versenyt is lebonyolítottak a Debreceni Egyetem Informatikai Karán \cite{competitions}. Nem ritka, hogy egy-egy kutatási platform versenyezteti a felhasználókat. Erre talán az egyik legjobb példa a mesterséges intelligencia területén a RoboCup \cite{robocup}.
+A rendszer másik célja, hogy egy verseny segítségével találjuk meg a lehető legjobb forgalomirányító algoritmust. Az OOCWC már több sikeres versenyen is túl van a Debreceni Egyetem Informatikai Karán \cite{competitions}. Gyakori, hogy egy kutatás által létrejött rendszerre versenyt szerveznek a felhasználók körében. Erre egy jó példa az mesterséges intelligencia (AI - Artificial Intelligence) területén a RoboCup \cite{robocup}.
 
 \vspace{2mm}
-Kiemelendő, hogy a rendszer magas fokú alkalmazkodó képességgel rendelkezik. Más és más jellegű útvonaltervezés szükséges kormányzati közlekedéshez, vészhelyzetek esetében, stb. Az oktatási és kutatási oldal támogatására került kifejlesztésre a ``Police Edition'' (egy-egy pillanatkép ebből a változatból a \ref{police}. ábrán látható). A cél, hogy rendőr ágensekkel, melyeket a kutató által implementált irányító algoritmus vezérel, minél több gengszter ágenst kapjunk el. Egy ilyen implementációra láthatunk példát a \cite{forkcoginfocom} absztraktban.
+Fontos megemlíteni, hogy a Robocar World Cup kiválóan alkalmazkodik a különböző esetekre. Az oktatás és kutatások támogatására került kifejlesztésre a ``Police Edition'' (egy pillanatkép ebből a változatból a \ref{police}. ábrán látható). A cél, hogy rendőr-ágensekkel, melyeket a felhasználó által megírt irányító algoritmus vezérel, minél több gengszter-ágenst kapjunk el.
 
 \vspace{2mm}
-Az OOCWC rendszerben a szimulációt a gyűjtött adatok alapján inicializáljuk. A rendszer jelenleg háromféle forgalmi egységet különböztet meg, routine cars, smart cars és guided cars. A szimuláció kezdőállapota a routine cars és smart cars elhelyezése a térképen a gyűjtött adatok alapján.
+A rendszer jelenleg háromféle forgalmi egységet különböztet meg, routine cars, smart cars és guided cars. A szimuláció kezdőállapota a routine cars és smart cars elhelyezése a térképen a gyűjtött adatok alapján.
 
 \begin{figure}[h]
 \centerline{
-\includegraphics[width=5in]{img/copselected}}
-\caption{Pillanatkép a rendszer ``Police Edition'' változatának a projekt szerinti módosításával (lásd: \ref{theapp}. fejezet). A térkép az OSM egy részlete, Debrecen, Hajdú-Bihar Megye, Magyarország. A megjelenítést a JXMapViewer2 \cite{jxmapv} biztosítja. A térképen a routine car rózsaszínnel, a gengszter ágensek pirossal (smart car), a rendőrágensek (guided car) kékkel jelölve. Az éppen kiálasztott rendőrágens melyet éppen irányítunk pedig el van látva a ``SELECTED'' felirattal. Forrás: \cite{infocomjournal} 
+\includegraphics[width=6in]{img/copselected}}
+\caption{Pillanatkép a rendszer ``Police Edition'' változatának a projekt szerinti módosításával (lásd: \ref{theapp}. fejezet). A térkép az OSM egy részlete, Debrecen, Hajdú-Bihar Megye, Magyarország. A megjelenítést a JXMapViewer2 \cite{jxmapv} biztosítja. A térképen a routine car rózsaszínnel, a gengszter ágensek pirossal (smart car), a rendőrágensek (guided car) kékkel jelölve. Az éppen kiválasztott rendőr-ágens melyet éppen irányítunk pedig el van látva a ``SELECTED'' felirattal. Forrás: \cite{infocomjournal} 
 \label{police}}
 \end{figure}
 
 \vspace{2mm}
-A rendszer ``Police Edition'' változatából készíthetnek egy saját fork-ot a hallgatók és az érdeklődő kutatók. A játék célja, hogy a rendőr ágensekkel minél több gengszter ágenst kapjunk el. A a bemutatott projekt (\ref{theapp}. fejezet) is egy ilyen forknak tekinthető.
+A rendszer ``Police Edition'' változatából készíthetnek egy saját fork-ot a hallgatók és az érdeklődő kutatók. A játék célja, hogy a rendőr ágensekkel minél több gengszter ágenst kapjunk el. A bemutatott projekt (\ref{theapp}. fejezet) is egy ilyen forknak tekinthető.
 
+\section{A rendszer elindítása}
+\label{howtostart}
 
+TODO parancsok berakása és megmagyarázása
+
+\section{Szükséges módosítások a projekt számára}
+\label{changes}
+
+\subsection{Az eredeti irányítás}
+\label{originalrouting}
+Eredetileg a rendőr-ágensek is C++ nyelven (\ref{cplusplus}. fejezet) lettek megvalósítva, ezáltal hozzáférnek az OOCWC osztott memóriájához (shared memory), amiben több adat közt megtalálható az OSM \citep{osm} (\ref{osm}. fejezet) térképből felépített irányított gráf BGL (Boost Graph Library) (\ref{boost}. fejezet). Ezt a gráfot és a Boost, gráfokra implementált, kereső algoritmusait felhasználva a rendőr-ágens képes létrehozni a szimulációs szerver által értelmezhető útkereső (routing) parancsot, mellyel a szerver a kapott parancs alapján mozgatja a megfelelő rendőr-ágenst. 
+
+\vspace{2mm}
+TODO a parancs szintaxisának bemutatása
+
+TODO forráskód a routingról
+
+\subsection{Az új irányítás}
+\label{newrouting}
+
+Ahhoz hogy az eredeti irányításhoz hasonló mozgatást érjünk el a kívánt rendőr-ágensen, egy olyan programozási nyelvvel amelynek nincs hozzáférése az OOCWC által felépített osztott memóriához, egy új parancs bevezetésére volt szükség, amely helyettesíti az eredeti útkereső parancsot, a valódi routingot (az út megtalálását kettő csomópont között) pedig a szerverre kellett bízni.
+
+\vspace{2mm}
+TODO az új parancs szintaxisának bemutatása
+
+TODO forráskód az új routingról
+
+\section{Az adat áramlása}
+\label{dataflow}
+
+\begin{figure}[h]
+\centerline{
+\includegraphics[width=4.5in]{img/dataflow}}
+\caption{Az adat áramlása az OOCWC rendszer (\ref{oocwc}. fejezet) és az alkalmazás (\ref{theapp}. fejezet) között.} 
+\label{dataflowpicture}}
+\end{figure}
 
 \newpage
-\chapter{Felhasznált technlológiák}
+\chapter{Felhasznált technológiák}
 \label{technologies}
-
 
 \section{Java}
 \label{java}
 
-A Java általános célú, objektumorientált programozási nyelv, amelyet a Sun Microsystems fejlesztett az 1990-es évek elejétől kezdve egészen 2009-ig, amikor a céget felvásárolta az Oracle. 2011-ben a Java 1.7-es verzióját, 2014-ben pedig az 1.8-as verzióját már az új tulajdonos gondozásában adták ki.
+A Java egy általános célú, objektumorientált programozási nyelv, amelyet a Sun Microsystems fejlesztett az 1990-es évek elejétől kezdve egészen 2009-ig, amikor a céget felvásárolta az Oracle. 2011-ben a Java 1.7-es verzióját, 2014-ben pedig az 1.8-as verzióját már az új tulajdonos gondozásában adták ki.
 
 \lstinputlisting[language=Java, caption=A klaszzikus ``Hello World!'' Javában, label=helloworldjava]{src/helloworld.java}
 
@@ -243,7 +266,7 @@ A JavaScript szintaxisa és neve hasonló ugyan a Java-éhoz, de a két nyelv ne
 Négy fontos szempontot tartottak szem előtt, amikor a Javát kifejlesztették:
 \begin{itemize}
 \item objektumorientáltság;
-\item függetlenség az operációs rendszertől, amelyen fut (platformfüggetlenség);
+\item függetlenség az operációs rendszertől amelyen fut (platformfüggetlenség);
 \item olyan kódokat és könyvtárakat tartalmazzon, amelyek elősegítik a hálózati programozást;
 \item távoli gépeken is képes legyen biztonságosan futni.
 \end{itemize}
@@ -270,15 +293,32 @@ Vannak olyan Java fordítóprogramok, amelyek a forráskódot natív gépi kódr
 Egyes cégek, mint például a Microsoft, mégis platformfüggő sajátságokat adtak a nyelvhez, amire a Sun keményen reagált: beperelte a Microsoftot (az amerikai bíróság 20 millió dollár kártérítésre és a sajátos tulajdonságok visszavonására kötelezte a céget). Válaszként a Microsoft kihagyta a Java rendszert a jövőbeli termékekből és Windows-változatokból. Ez azt jelenti, hogy az Internet Explorer webböngésző alapváltozataiból hiányzik a Java. Így abban az olyan weboldalak, amelyek Java-t használnak, nem fognak helyesen megjelenni. A Windows-felhasználók e problémáját megoldva a Sun és más cégek ingyenesen letölthetővé tették a JVM rendszert azon Windows-változatok számára, amelyekből a virtuális gép hiányzik.
 
 \vspace{2mm}
-A hordozhatóság megvalósítása technikailag nagyon bonyolult. E közben a Java esetében is sok vita volt. Az „írd meg egyszer, futtasd bárhol” szlogenből „írd meg egyszer, keress hibát mindenhol” lett. 2016-ra a hordozhatóság nem okoz tovább problémát, mivel maga a Java is nyílit szabványokra épül, pl. openGL v. Open POSIX vagy az RFC-k, a Java minden jelentősebb platformon elérhető (Linux, Unix, Windows, más rendszerek pl. AS/400).
+A hordozhatóság megvalósítása technikailag nagyon bonyolult. E közben a Java esetében is sok vita volt. Az „írd meg egyszer, futtasd bárhol” szlogenből „írd meg egyszer, keress hibát mindenhol” lett. 2016-ra a hordozhatóság nem okoz tovább problémát, mivel maga a Java is nyílt szabványokra épül, például: openGL, vagy Open POSIX.
+
+\vspace{2mm}
+A Java minden jelentősebb platformon elérhető (Linux, Unix, Windows, iOS).
 
 \subsection{Swing}
 \label{swing}
+
+A Swing egy eszközkészlet a grafikus felhasználói felületek létrehozására.
+
+\vspace{2mm}
+A Swinget azzal a céllal fejlesztették, hogy egy szofisztikáltabb GUI komponenshalmazt szolgáltasson mint a korábbi Abstract Window Toolkit (AWT) \cite{awt}. A Swingnek a komponensei erőteljesebb és flexibilisebb az AWT-hez hasonlítva. A már ismert komponensekhez, mint például a Button-ök, check boxok és labelek, a Swing olyan további fejlett eszközökkel szolgál, mint a tabbed panel, scroll pane, fák, táblázatok és listák.
+
+\vspace{2mm}
+Ellentétben az Abstract Window Toolkit komponenseivel, a Swing komponensei nem platform-specifikus kódként lettek implementálva. Helyette teljesen Java nyelven írták meg, ezáltal a komponensek platform-függetlenek lettek. A ``lightweight'' kifejezéssel írjuk le az ilyen elemeket \cite{swingarticle}.
+
+\vspace{2mm}
+A Swinget a közeljövőben a JavaFX \cite{javafx} fogja felváltani.
 
 \subsection{JXMapViewer}
 \label{jxmapviewer}
 
 A JXMapViewer \cite{jxmapv} egy nyílt forráskódú Java könyvtár, ami egy Swing (\ref{swing}. fejezet) JPanelt \cite{jpanel} szolgáltat, melynek feladata a térkép betöltése, és mutatása.
+
+\vspace{2mm}
+TODO
 
 \newpage
 \section{C++}
@@ -301,7 +341,7 @@ Bjarne Stroustrup kezdte el a C++ programozási nyelv fejlesztését a C program
 
 \begin{figure}[h]
 \centerline{
-\includegraphics[width=3.2in]{img/boost}}
+\includegraphics[width=3.6in]{img/boost}}
 \caption{A Boost logója. Forrás: \cite{boostlogo}.}
 \label{basedesign}
 \end{figure}
@@ -310,7 +350,7 @@ Bjarne Stroustrup kezdte el a C++ programozási nyelv fejlesztését a C program
 A Boost a C++ programozási nyelvhez ad támogatást olyan könyvtárakkal, melyek különböző területek különböző problémáit segítenek megoldani. Többek között ilyen területek a lineáris algebra, a pseudorandom számok generálása, a többszálasítás, a képfeldolgozás, a reguláris kiejezések, illetve a unittesztelés. 
 
 \vspace{2mm}
-Az OOCWC (\ref{oocwc}. fejezet) számára az egyik legfontosabb ilyen könyvtár a BGL (Boost Graph Library) \cite{bgl}, melynek segítségével épül fel az OSM \cite{osm} térkép alapján az OOCWC irányított gráfja.
+Az OOCWC (\ref{oocwc}. fejezet) számára az egyik legfontosabb ilyen könyvtár a BGL (Boost Graph Library) \cite{bgl}, melynek segítségével épül fel az OpenStreetMap \cite{osm} (\ref{osm}. fejezet) térkép alapján az OOCWC irányított gráfja.
 
 \newpage
 \section{Maven}
@@ -327,6 +367,7 @@ A Maven hálózatképes, tehát szükség esetén dinamikusan is le tud tölteni
 \vspace{2mm}
 A Maven-nek léteznek beépülő moduljai számos népszerű IDE-höz, melyek integrációt nyújtanak a Mavennal való az IDE build mechanizmusához, kódszerkesztő eszközeihez. Ezekkel lehetőség van az IDE-ből lefordítani a projekteket, és beállítani a classpath-t a kód kiegészítéshez ill. fordító hibák színezéséhez stb. Ilyen IDE például az Eclipse, illetve a NetBeans is.
 
+\newpage
 \section{Git}
 \label{git}
 
@@ -365,25 +406,44 @@ A \url{www.openstreetmap.org} \cite{osm} címen a regisztrációt követően bá
 \chapter{Az alkalmazás (Cop Controller)}
 \label{theapp}
 
-Ennek a projektnek a célja az, hogy az OOCWC kvalifikációs részét valós-idejű irányítás válthassa ki, ezáltal érdekesebbé, és kézügyességtől (is) függővé válna a gengszterek elkapása.
+Ennek a projektnek a célja az, hogy az OOCWC (\ref{oocwc}. fejezet) kvalifikációs (illetve a bátrabbaknak a verseny) részét (is) valósidejű irányítás válthassa ki, ezáltal érdekesebbé, és kézügyességtől (is) függővé válik a gengszterek elkapása.
 
-\newpage
-\section{Az alkalmazás funckiói}
+\vspace{2mm}
+A projekt egy Maven (\ref{maven}. fejezet) által menedzselt Java (\ref{java}. fejezet) alkalmazás, amihez egy Swing (\ref{swing}. fejezet) grafikus felhasználói felület (Graphic User Interface) tartozik. Továbbá a Maven felelős a projekt dependenciáinak (dependency) a megfelelő verziószámú kiadás letöltéséért is (például JXMapViewer2 \cite{jxmapv} (\ref{jxmapviewer}. fejezet)).
+
+TODO az alkalmazás egy pillanatképe leírással.
+
+
+\section{Az alkalmazás funkciói}
 \label{functions}
 
-\newpage
-\section{Az adat áramlása}
-\label{dataflow}
 
+\subsection{Aktuális állás megjelenítése}
+\label{actualstate}
+
+TODO kép hozzáadása + kevés magyarázás
+
+\subsection{Rendőrök és gengszterek hozzáadása}
+\label{addcops}
+
+TODO kép hozzáadása + működés magyarázása
+
+\subsection{Rendőrök irányítása}
+\label{controlcops}
+
+TODO kép hozzáadása + működés magyarázása
 
 \newpage
 \chapter{Jövőbeli munka}
 \label{futureworks}
 
+TODO további lehetséges fejlesztések részletezése
+
 \newpage
 \chapter{Összefoglalás}
 \label{summary}
 
+TODO
 
 \newpage
 \addcontentsline{toc}{chapter}{Irodalomjegyzék}
