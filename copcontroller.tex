@@ -159,11 +159,11 @@ TODO
 
 \section{Ismerkedés az OOCWC rendszerrel}
 
-Az OOCWC rendszer célja, hogy az autonóm autók és az okos városok közötti összefüggéseket vizsgálja, kutatási valamint oktatási célokat is szolgál. A rendszer felépítését a 2.1. ábra szemlélteti.
+Az OOCWC rendszer célja, hogy az autonóm autók és az okos városok közötti összefüggéseket vizsgálja, kutatási valamint oktatási célokat is szolgál. A rendszer felépítését a \ref{basedesign}. ábra szemlélteti.
 
 \begin{figure}[h]
 \centerline{
-\includegraphics[width=3.5in]{img/tetris_plan}}
+\includegraphics[width=3.7in]{img/tetris_plan}}
 \caption{Az OOCWC rendszer tetris terve. Forrás: \cite{oocwcrepo}.}
 \label{basedesign}
 \end{figure}
@@ -192,13 +192,6 @@ Fontos megemlíteni, hogy a Robocar World Cup kiválóan alkalmazkodik a külön
 \vspace{2mm}
 A rendszer jelenleg háromféle forgalmi egységet különböztet meg, routine cars, smart cars és guided cars. A szimuláció kezdőállapota a routine cars és smart cars elhelyezése a térképen a gyűjtött adatok alapján.
 
-\begin{figure}[h]
-\centerline{
-\includegraphics[width=6in]{img/copselected}}
-\caption{Pillanatkép a rendszer ``Police Edition'' változatának a projekt szerinti módosításával (lásd: \ref{theapp}. fejezet). A térkép az OSM egy részlete, Debrecen, Hajdú-Bihar Megye, Magyarország. A megjelenítést a JXMapViewer2 \cite{jxmapv} biztosítja. A térképen a routine car rózsaszínnel, a gengszter ágensek pirossal (smart car), a rendőrágensek (guided car) kékkel jelölve. Az éppen kiválasztott rendőr-ágens melyet éppen irányítunk pedig el van látva a ``SELECTED'' felirattal. Forrás: \cite{infocomjournal} 
-\label{police}}
-\end{figure}
-
 \vspace{2mm}
 A rendszer ``Police Edition'' változatából készíthetnek egy saját fork-ot a hallgatók és az érdeklődő kutatók. A játék célja, hogy a rendőr ágensekkel minél több gengszter ágenst kapjunk el. A bemutatott projekt (\ref{theapp}. fejezet) is egy ilyen forknak tekinthető.
 
@@ -225,6 +218,9 @@ TODO forráskód a routingról
 Ahhoz hogy az eredeti irányításhoz hasonló mozgatást érjünk el a kívánt rendőr-ágensen, egy olyan programozási nyelvvel amelynek nincs hozzáférése az OOCWC által felépített osztott memóriához, egy új parancs bevezetésére volt szükség, amely helyettesíti az eredeti útkereső parancsot, a valódi routingot (az út megtalálását kettő csomópont között) pedig a szerverre kellett bízni.
 
 \vspace{2mm}
+Ennek a változtatásnak a bevezetésével úgy vélem hogy egy új lehetőség nyílik meg az OOCWC rendszer számára, mégpedig hogy több programozási nyelv segítségével is meg lehessen jeleníteni az aktuális állapotot, illetve lehessen irányítani a rendőr-ágenseket. (I'm looking at you, Python)
+
+\vspace{2mm}
 TODO az új parancs szintaxisának bemutatása
 
 TODO forráskód az új routingról
@@ -235,9 +231,14 @@ TODO forráskód az új routingról
 \begin{figure}[h]
 \centerline{
 \includegraphics[width=4.5in]{img/dataflow}}
-\caption{Az adat áramlása az OOCWC rendszer (\ref{oocwc}. fejezet) és az alkalmazás (\ref{theapp}. fejezet) között.} 
-\label{dataflowpicture}}
+\caption{Az adat áramlása az OOCWC rendszer (\ref{oocwc}. fejezet) és az alkalmazás (\ref{theapp}. fejezet) között.}
+\label{dataflowpicture}
 \end{figure}
+
+Ahogy a \ref{dataflowpicture}. ábrán látható, ahogy folyik a szimuláció a szerveren, úgy minden egyes lépésenként a szerver elküldi az aktuális állást az alkalmazásnak. Ezt a Cop Controller feldolgozza, ezáltal valós idejű képet adva a jelenleg állásról.
+
+\vspace{2mm}
+Az alkalmazás oldaláról több funkciót is lehet lehet használni. Ezekeről többet a \ref{functions}. fejezetben olvashatsz. Ezek a funkciók azonnal feldolgozásra kerülnek a szerveren, így a változás azonnal látható lesz.
 
 \newpage
 \chapter{Felhasznált technológiák}
@@ -339,11 +340,11 @@ Bjarne Stroustrup kezdte el a C++ programozási nyelv fejlesztését a C program
 \subsection{Boost library}
 \label{boost}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centerline{
 \includegraphics[width=3.6in]{img/boost}}
 \caption{A Boost logója. Forrás: \cite{boostlogo}.}
-\label{basedesign}
+\label{boostlogo}
 \end{figure}
 
 \vspace{2mm}
@@ -406,12 +407,25 @@ A \url{www.openstreetmap.org} \cite{osm} címen a regisztrációt követően bá
 \chapter{Az alkalmazás (Cop Controller)}
 \label{theapp}
 
+\begin{figure}[h]
+\centerline{
+\includegraphics[width=6in]{img/copselected}}
+\caption{Pillanatkép a rendszer ``Police Edition'' változatának a projekt szerinti módosításával (lásd: \ref{theapp}. fejezet). A térkép az OSM egy részlete, Debrecen, Hajdú-Bihar Megye, Magyarország. A megjelenítést a JXMapViewer2 \cite{jxmapv} biztosítja. A térképen a routine car rózsaszínnel, a gengszter ágensek pirossal (smart car), a rendőrágensek (guided car) kékkel jelölve. Az éppen kiválasztott rendőr-ágens melyet éppen irányítunk pedig el van látva a ``SELECTED'' felirattal. Forrás: \cite{infocomjournal} 
+\label{police}}
+\end{figure}
+
 Ennek a projektnek a célja az, hogy az OOCWC (\ref{oocwc}. fejezet) kvalifikációs (illetve a bátrabbaknak a verseny) részét (is) valósidejű irányítás válthassa ki, ezáltal érdekesebbé, és kézügyességtől (is) függővé válik a gengszterek elkapása.
 
 \vspace{2mm}
-A projekt egy Maven (\ref{maven}. fejezet) által menedzselt Java (\ref{java}. fejezet) alkalmazás, amihez egy Swing (\ref{swing}. fejezet) grafikus felhasználói felület (Graphic User Interface) tartozik. Továbbá a Maven felelős a projekt dependenciáinak (dependency) a megfelelő verziószámú kiadás letöltéséért is (például JXMapViewer2 \cite{jxmapv} (\ref{jxmapviewer}. fejezet)).
+A projekt egy Maven (\ref{maven}. fejezet) által menedzselt Java (\ref{java}. fejezet) alkalmazás, amihez egy Swing (\ref{swing}. fejezet) grafikus felhasználói felület (Graphic User Interface) tartozik. Továbbá a Maven felelős a projekt dependenciáinak (dependency) a megfelelő verziószámú letöltéséért is. 
 
-TODO az alkalmazás egy pillanatképe leírással.
+\vspace{2mm}
+Ilyen függőség például JXMapViewer2 \cite{jxmapv} (\ref{jxmapviewer}. fejezet)).
+
+
+\section{Az alkalmazás elindítása}
+\label{howtorun}
+
 
 
 \section{Az alkalmazás funkciói}
@@ -432,6 +446,8 @@ TODO kép hozzáadása + működés magyarázása
 \label{controlcops}
 
 TODO kép hozzáadása + működés magyarázása
+
+
 
 \newpage
 \chapter{Jövőbeli munka}
