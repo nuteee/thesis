@@ -1,0 +1,1 @@
+src/smartcity --osm=../debrecen.osm --city=Debrecen --shm=DebrecenSharedMemory

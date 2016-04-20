@@ -136,9 +136,6 @@ Debrecen
 
 \chapter{Bevezetés}
 
-\section{Robotautók}
-\label{robocars}
-
 \begin{figure}[h]
 \centerline{
 \includegraphics[width=6in]{img/googleauto}}
@@ -146,13 +143,32 @@ Debrecen
 \label{googleauto}
 \end{figure}
 
-TODO
+A közelmúltban nagy mértékű fejlődést vehettünk észre az autógyártásban, különösképp a magukat irányítani tudó autók kapcsán. Több és több autók gyártásával foglalkozó cég fejleszt robotautót. Ilyen például ezen a területen az elsőként megjelenő Google, melynek a robotautóját a \ref{googleauto}. képen láthatjuk. Ezek a szokások dinamikus fejlődést mutatnak. A 2000-es évektől kezdve az autók elektronikus eszközei jelentős mértékben arról szóltak, hogy azok segítették a vezetőt különböző módokon. Ilyen eszközök például a tolató radarok, illetve a gyalogosfigyelő rendszerek is. 
 
-\section{Okos városok}
-\label{smartcities}
+\vspace{2mm}
+Az elkövetkező éveket azonban várhatóan az autonóm autók nagy mértékű megjelenése és elterjedése váltja fel. Ezek az autók mellett nemrég láthattuk a Tesla új modelljének a bemutatóját is, mely ugyancsak erősíti a feltevést, miszerint az elektromos hajtású, illetve az úgynevezett ``hibrid'' hajtású kocsik előtt áll a jövő. Elektromos hajtású kocsikat manapság is láthatunk már az utcákon. Ezeket könnyen felismerhetjük a zöld hátterű rendszámtáblájukól.
 
-TODO
+\vspace{2mm}
+A fent említettek alapján tisztán látszik, hogy az autóipar szemléletváltás előtt áll. A nem újrahasznosítható energiaforrásokon alapulú motorokat és a vezetői élményt kezdi lassan felváltani a hosszabb távon fenntartható, újrahasznosítható energiaforrást használó motorokkal hajtott autonóm gépkocsik, mellyel az utazáshoz a pihentető időtöltés vízióját próbálják hozzárendelni.
 
+\begin{figure}[h]
+\centerline{
+\includegraphics[width=6in]{img/smartcitylogo}}
+\caption{Egy elképzelt okos város vektorgrafikus ábrázolása. Forrás: \cite{smartcitylogo}.}
+\label{smartcitylogo}
+\end{figure}
+
+\vspace{2mm}
+2050-re a világ lakosságának 70\%-a valószínűleg városokban fog élni \cite{unpopulation}. Ez a gyors városiasodás új kihívásokat állít fel a város infrastruktúrája felé. Több kérdés is felmerül ilyenkor. Hogyan tudunk biztonságosan ``irányítani'' egy ilyen nagy méretű népességet? Mely szolgáltatásokkal lássa el a városi ügyintézés azért, hogy fenntartható legyen a város? 
+
+\vspace{2mm}
+Ezeket a kérdéseket is megválaszolja az Okos városok kutatási területe, mely eredményei egyre inkább láthatóak a mindennapi életben is. Talán az egyik legfontosabb kérdés ez ügyben a városi közlekedés. Ahogy nő a népesség, úgy nő azok az emberek (és kocsik) száma akik a város infrastruktúráját, illetve úthálózatát használják. Hogyan tud segíteni a városi management, hogy az ott élők a lehető leghatékonyabban tudjanak közlekedni? Ezt a kérdést válaszolja meg a smart traffic management.
+
+\vspace{2mm}
+Az Smart City Research and Development terület láthatóan fontos szerepet fog kapni az elkövetkezendő 10-20 évben. Előrejelzések azt mutatják, hogy 2023-ra több mint 170 milliárd USD beruházás valósul meg a világon \cite{navigant}. Az informatikai fejlesztések ezen a téren már egyre jobban beférkőztek a hétköznapokba is, mint például az iCity \cite{icity}, a FI\-Ware \cite{fiware}, vagy a \cite{vital}. Ezeken túl egyre többen kísérleteznek azzal, hogy a város embereinek a mindennapjait hatékonyabbá és biztonságosabbá varázsolja (\cite{myneighbourhood}, \cite{futureglasgow}, \cite{smartsantander}). 
+
+\vspace{2mm}
+Sok tanulmány foglalkozik még azzal, hogy hogyan lehetne egy városnak az ``okosságát'' megmérni (\cite{de2014smart}, \cite{carli2013measuring}, \cite{yamauchi2014development}, \cite{neirotti2014current}). A városok ``okosságáról'' még egy sorrendet is készítettek \cite{giffinger2007smart}. Az okos városokban a vészhelyzetek megoldása is fontos szerepet kap \cite{du2012research}.
 
 \chapter{A Robocar World Championship (OOCWC)}
 \label{oocwc}
@@ -195,22 +211,55 @@ A rendszer jelenleg háromféle forgalmi egységet különböztet meg, routine c
 \vspace{2mm}
 A rendszer ``Police Edition'' változatából készíthetnek egy saját fork-ot a hallgatók és az érdeklődő kutatók. A játék célja, hogy a rendőr ágensekkel minél több gengszter ágenst kapjunk el. A bemutatott projekt (\ref{theapp}. fejezet) is egy ilyen forknak tekinthető.
 
+\vspace{2mm}
+A rendszerről további információk olvashatóak a \cite{infocomjournal} közleményben.
+
 \section{A rendszer elindítása}
 \label{howtostart}
 
-TODO parancsok berakása és megmagyarázása
+A továbbiakban tételezzük fel hogy a projektben a szükséges forráskódokat már lefordítottuk, így binárisan elérhetőek, továbbá jelenleg az ``rcemu'' mappában vagyunk, és a szülőmappában elérhető . Ehhez segítséget az OOCWC eredeti tárolóján \cite{oocwcrepo} találhatunk.
+
+\vspace{2mm}
+Elsőnek az okos városunkat kell elindítani. Ezt a \ref{startsmartcity}. forráskódban látható Bash parancs futtatásával  tehetjük meg.
+
+\lstinputlisting[language=bash, caption=A SmartCity elindítása, label=startsmartcity]{src/smartcity.sh}
+
+Itt a kapcsolók a következő beállításokat jelentik:
+
+\begin{itemize}
+\item osm -- Az OpenStreetMap térkép elérési útvonala.
+\item city -- A szimulált város neve.
+\item shm -- Az osztott memória elérési neve.
+\end{itemize}
+
+Amennyiben a SmartCity kimenetén megjelenik hogy ``Ready'', úgy folytathatjuk a következő lépéssel, a szimulációs szerver elindításával, melynek a parancsát a \ref{starttraffic}. forráskódban láthatjuk.
+
+\lstinputlisting[language=bash, caption=A szimulációs szerver elindítása, label=starttraffic]{src/traffic.sh}
+
+A beállítási kapcsolók jelentése a következő:
+
+\begin{itemize}
+\item port -- A szervernek a portja, amelyen a szerver üzemel.
+\item shm -- Az osztott memória neve.
+\end{itemize}
 
 \section{Szükséges módosítások a projekt számára}
 \label{changes}
 
 \subsection{Az eredeti irányítás}
 \label{originalrouting}
+
 Eredetileg a rendőr-ágensek is C++ nyelven (\ref{cplusplus}. fejezet) lettek megvalósítva, ezáltal hozzáférnek az OOCWC osztott memóriájához (shared memory), amiben több adat közt megtalálható az OSM \citep{osm} (\ref{osm}. fejezet) térképből felépített irányított gráf BGL (Boost Graph Library) (\ref{boost}. fejezet). Ezt a gráfot és a Boost, gráfokra implementált, kereső algoritmusait felhasználva a rendőr-ágens képes létrehozni a szimulációs szerver által értelmezhető útkereső (routing) parancsot, mellyel a szerver a kapott parancs alapján mozgatja a megfelelő rendőr-ágenst. 
 
 \vspace{2mm}
-TODO a parancs szintaxisának bemutatása
+Az eredeti parancs a következőképp néz ki: 
+\begin{lstlisting}
+<route [a csomopontok szama: N] [rendor-agens ID] [N darab csomopont]>
+\end{lstlisting}
 
-TODO forráskód a routingról
+Ez a parancs a \ref{originalroutingsrc}. forráskódrészleten látható módon lesz feldolgozva.
+
+\lstinputlisting[language=C++, caption=Az eredeti routing forráskód részlete, label=originalroutingsrc]{src/originalroutingcmd.cpp}
 
 \subsection{Az új irányítás}
 \label{newrouting}
@@ -426,7 +475,7 @@ Ilyen függőség például JXMapViewer2 \cite{jxmapv} (\ref{jxmapviewer}. fejez
 \section{Az alkalmazás elindítása}
 \label{howtorun}
 
-
+TODO képek importálásról + parancsok
 
 \section{Az alkalmazás funkciói}
 \label{functions}
@@ -435,19 +484,43 @@ Ilyen függőség például JXMapViewer2 \cite{jxmapv} (\ref{jxmapviewer}. fejez
 \subsection{Aktuális állás megjelenítése}
 \label{actualstate}
 
-TODO kép hozzáadása + kevés magyarázás
+Az aktuális állást egyrészt a főképernyőn lehet látni, másrészt az alkalmazás fejlécében összegezve van hogy a szimuláció mennyi időnél tart, illetve hogy melyik rendőrcsapat összesen hány gengsztert kapott el eddig.
+
+TODO
 
 \subsection{Rendőrök és gengszterek hozzáadása}
 \label{addcops}
 
-TODO kép hozzáadása + működés magyarázása
+Az alkalmazásban lehetőség van:
+
+\begin{itemize}
+\item 1 rendőr hozzáadására (\ref{init1cop}. forráskód);
+\item 10 rendőr hozzáadására (\ref{init10cop}. forráskód);
+\item 100 gengszter hozzáadására (\ref{init100gangster}. forráskód).
+\end{itemize}
+
+\lstinputlisting[language=bash, caption=1 rendőr hozzáadása; ahol a ``Gergo'' a rendőr csapatnevét jelenti., label=init1cop]{src/init_1_cop.sh}
+
+\lstinputlisting[language=bash, caption=10 rendőr hozzáadása; ahol a ``Gergo'' a rendőrök csapatnevét jelenti., label=init10cop]{src/init_10_cop.sh}
+
+\lstinputlisting[language=bash, caption=100 gengszter hozzáadása; ahol a ``Gergo'' azt a csapatnak a nevét jelenti amely hozzáadta a gengsztereket., label=init100gangster]{src/init_100_gangsters.sh}
+
+Mindhárom parancs működösénék az alapelve megegyezik. A telnet protokollt felhasználva elküldjük a kívánt parancsnak megfelelő üzenetet, amit a szimulációs szerver feldolgoz. Ezeknek a parancsoknak az eredményeit azonnal láthatjuk (Erről többet a \ref{dataflow}. fejezetben lehet olvasni).
+
+\vspace{2mm}
+Ezeknek a megoldásoknak az előnye hogy a parancsok egy teljesen különböző processzként futnak mint az alkalmazás, ezáltal nem zavarják a folyamatos adatáramlást, ami a megjelenítéshez szükséges. Példa az alkalmazásból 100 gengszter inicializálására a \ref{call100gangster}. forráskódrészletben látható.
+
+\lstinputlisting[language=Java, caption=100 gengszter hozzáadása a \ref{init100gangster}. forráskódot felhasználva Java nyelven., label=call100gangster]{src/call100gangster.java}
 
 \subsection{Rendőrök irányítása}
 \label{controlcops}
 
-TODO kép hozzáadása + működés magyarázása
+Miután már van saját rendőrünk a szimulációban (lásd: \ref{addcops}. fejezet), Tudjuk őket irányítani is.
 
+\vspace{2mm}
+Alaphelyzetben nincs egy rendőr se kiválasztva. Ahhoz hogy egy rendőr-ágenst irányítani tudjunk egy rendőr közelébe kell kattintanunk a bal egérgombbal, és légvonalban 2500 méteren belül kell lennie a kattintás térképre vetített pontjának a rendőr helyzetétől. Amennyiben már volt kijelölve egy rendőr, de le szeretnénk venni a jelölést, úgy egyszerűen csak egy olyan pontra kell kattintanunk, amely nem esik bele egy rendőr 2,5 kilóméteres körébe sem. Ennek a megvalósítása a \ref{selectcop}. forráskódrészleten látható.
 
+\lstinputlisting[language=Java, caption=A legközelebbi rendőr kiválasztása amennyiben az 2500 méteren belül tartózkodik., label=selectcop]{src/selectcop.java}
 
 \newpage
 \chapter{Jövőbeli munka}
