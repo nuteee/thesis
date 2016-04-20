@@ -277,14 +277,14 @@ TODO forráskód az új routingról
 \section{Az adat áramlása}
 \label{dataflow}
 
+Ahogy a \ref{dataflowpicture}. ábrán látható, ahogy folyik a szimuláció a szerveren, úgy minden egyes lépésenként a szerver elküldi az aktuális állást az alkalmazásnak. Ezt a Cop Controller feldolgozza, ezáltal valós idejű képet adva a jelenleg állásról.
+
 \begin{figure}[h]
 \centerline{
 \includegraphics[width=4.5in]{img/dataflow}}
 \caption{Az adat áramlása az OOCWC rendszer (\ref{oocwc}. fejezet) és az alkalmazás (\ref{theapp}. fejezet) között.}
 \label{dataflowpicture}
 \end{figure}
-
-Ahogy a \ref{dataflowpicture}. ábrán látható, ahogy folyik a szimuláció a szerveren, úgy minden egyes lépésenként a szerver elküldi az aktuális állást az alkalmazásnak. Ezt a Cop Controller feldolgozza, ezáltal valós idejű képet adva a jelenleg állásról.
 
 \vspace{2mm}
 Az alkalmazás oldaláról több funkciót is lehet lehet használni. Ezekeről többet a \ref{functions}. fejezetben olvashatsz. Ezek a funkciók azonnal feldolgozásra kerülnek a szerveren, így a változás azonnal látható lesz.
