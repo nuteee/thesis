@@ -168,7 +168,7 @@ Ezeket a kérdéseket is megválaszolja az Okos városok kutatási területe, me
 Az Smart City Research and Development terület láthatóan fontos szerepet fog kapni az elkövetkezendő 10-20 évben. Előrejelzések azt mutatják, hogy 2023-ra több mint 170 milliárd USD beruházás valósul meg a világon \cite{navigant}. Az informatikai fejlesztések ezen a téren már egyre jobban beférkőztek a hétköznapokba is, mint például az iCity \cite{icity}, a FI\-Ware \cite{fiware}, vagy a \cite{vital}. Ezeken túl egyre többen kísérleteznek azzal, hogy a város embereinek a mindennapjait hatékonyabbá és biztonságosabbá varázsolja (\cite{myneighbourhood}, \cite{futureglasgow}, \cite{smartsantander}). 
 
 \vspace{2mm}
-Sok tanulmány foglalkozik még azzal, hogy hogyan lehetne egy városnak az ``okosságát'' megmérni (\cite{de2014smart}, \cite{carli2013measuring}, \cite{yamauchi2014development}, \cite{neirotti2014current}). A városok ``okosságáról'' még egy sorrendet is készítettek \cite{giffinger2007smart}. Az okos városokban a vészhelyzetek megoldása is fontos szerepet kap \cite{du2012research}.
+Sok tanulmány foglalkozik még azzal, hogy hogyan lehetne egy városnak az ``okosságát'' megmérni (\cite{de2014smart}, \cite{carli2013measuring}, \cite{neirotti2014current}). A városok ``okosságáról'' még egy sorrendet is készítettek \cite{giffinger2007smart}. Az okos városokban a vészhelyzetek megoldása is fontos szerepet kap \cite{du2012research}.
 
 \chapter{A Robocar World Championship (OOCWC)}
 \label{oocwc}
@@ -296,44 +296,62 @@ Az alkalmazás oldaláról több funkciót is lehet lehet használni. Ezekeről 
 \section{Java}
 \label{java}
 
-A Java egy általános célú, objektumorientált programozási nyelv, amelyet a Sun Microsystems fejlesztett az 1990-es évek elejétől kezdve egészen 2009-ig, amikor a céget felvásárolta az Oracle. 2011-ben a Java 1.7-es verzióját, 2014-ben pedig az 1.8-as verzióját már az új tulajdonos gondozásában adták ki.
+\begin{figure}
+\centerline{
+\includegraphics[width=1.1in]{img/javalogo}}
+\caption{A Java hivatalos logója.}
+\label{javalogo}
+\end{figure}
 
-\lstinputlisting[language=Java, caption=A klaszzikus ``Hello World!'' Javában, label=helloworldjava]{src/helloworld.java}
-
-\vspace{2mm}
-A nyelv 2016-ban is sikeres a szerver oldalon a servlet, a JSP és Enterprise JavaBeans, JDBC technológiákkal, integrációs lehetőségeivel, nyelvi eszközeivel, jvm nyelveivel és a nyílt forráskódú közösség tudására is építve.
-
-\vspace{2mm}
-A Java alkalmazásokat jellemzően bájtkód formátumra alakítják, de közvetlenül natív (gépi) kód is készíthető Java forráskódból. A bájtkód futtatása a Java virtuális géppel történik, ami vagy interpretálja a bájtkódot, vagy natív gépi kódot készít belőle, és azt futtatja az adott operációs rendszeren. Létezik közvetlenül Java bájtkódot futtató hardver is, az úgynevezett Java processzor.
-
-\vspace{2mm}
-A Java nyelv a szintaxisát főleg a C és a C++ (\ref{cplusplus}. fejezet) nyelvektől örökölte, viszont sokkal egyszerűbb objektummodellel rendelkezik, mint a C++. Példaként szolgál az egyik fő különbsége a C++ nyelvtől: nincs az osztályok között többszörös öröklődés (ezt a célt az interfészek valósítják meg). 
+A Java programozási nyelv az alapja szinte minden típusú hálózati alkalmazásnak, és a világkörű szabvány a beágyazott mobil alkalmazások, játékok, webes tartalmak, és a vállalati szoftverek számára. Több mint 9 millió fejlesztővel világszerte a háta mögött, a Java az egyik leghasználtabb és legelterjedtebb programozási nyelv. 
 
 \vspace{2mm}
-A JavaScript szintaxisa és neve hasonló ugyan a Java-éhoz, de a két nyelv nem áll olyan szoros rokonságban, mint azt ezekből a hasonlóságokból gondolhatnánk.
+Néhány érdekes tény a Java nyelvről:
 
-\vspace{2mm}
-Négy fontos szempontot tartottak szem előtt, amikor a Javát kifejlesztették:
 \begin{itemize}
-\item objektumorientáltság;
-\item függetlenség az operációs rendszertől amelyen fut (platformfüggetlenség);
-\item olyan kódokat és könyvtárakat tartalmazzon, amelyek elősegítik a hálózati programozást;
-\item távoli gépeken is képes legyen biztonságosan futni.
+\item 97\%-a a vállalati számítógépeknek futtat Javát.
+\item 89\%-a az asztali kompjútereknek az Amerikai Egyesül Államokban képes Javát futtatni.
+\item A fejlesztők első számú választása.
+\item Az első számú fejlesztési platform.
+\item 3 milliárd mobil eszközön tudnak futni Java alkalmazások.
+\item 125 millió TV készülékek képesek Java alkalmazásokat futtatni.
 \end{itemize}
+
+\vspace{2mm}
+A Java úgy lett kialakítva, hogy lehetővé váljon a hordozható, nagy teljesítményű alkalmazások fejlesztése a legszélesebb körű számítástechnikai platformok számára. Azáltal hogy az alkalmazások heterogén környezetekben elérhetővé válnak, a különböző vállalkozások képesek több szolgáltatást nyújtani, és megnöveli a a végfelhasználói produktivitást, kommunikációt és együttműködést -- és drasztikusan csökkennek a fenntartási költségek mind a vállalati, mind a fogyasztói alkalmazások köében. A Java felbecsülhetetlenné vált a fejlesztők számára azáltal, hogy lehetővé tette:
+
+\begin{itemize}
+\item A szoftverek megírását egy platformon, és annak futtatását virtuálisan bármely másik platformon;
+\item Olyan programok létrehozását, melyek egy interes böngészőn belül futnak, és hozzáférése van az elérhető internetes szolgáltatásokhoz;
+\item A Javában írt alkalmazások, illetve szolgáltatások, összeillesztését annak érdekében, hogy magasan személyre szabott alkalmazásokat / szolgáltatásokat fejlesszünk \cite{aboutjava}.
+\end{itemize}
+
+
+
 
 \subsection{Története}
 \label{javahistory}
+
+Manapság, amikor a technológia már ennyire része a mindennapi életünknek, magától értetődőnek tartjuk, hogy bármikor és bárhol elérhetővé válnak az alkalmazások és a keresett tartlmak. A Java nyelv miatt napjainkban már elvártnak tekintjük a digitális eszköeinktől hogy több funkcióval rendelkezzenek, okosabbak és jóval szórakoztatóbbak legyenek.
+
 \vspace{2mm}
-Bár a nyelv neve kezdetben Oak (tölgyfa) volt, (James Gosling, a nyelv atyja nevezte így az irodája előtt növő tölgyfáról), később kiderült, hogy ilyen elnevezésű nyelv már létezik, ezért végül Java néven vált ismertté. A Java nyelvet kávézás közben találták ki, innen ered a kávéscsésze ikon \cite{javaname}.
+Az 1990-es évek elején a hálózati számítás kierjesztése a mindennapi életre egy radikális elképzelésnek számított. 1991-ben egy kis csoportja a Sun mérnökeinek, akik a ``Green Team'' csapatnevet viselték, James Gosling irányításával létrehoztak egy új programozási nyelvet -- a Javát \cite{javahistory}.
 
 \subsection{Objektumorientáltság}
 \label{oo}
 
-A nyelv első tulajdonsága, az objektumorientáltság (``OO''), a programozási stílusra és a nyelv struktúrájára utal. Az OO fontos szempontja, hogy a szoftvert ``dolgok'' (objektumok) alapján csoportosítja, nem az elvégzett feladatok a fő szempont. Ennek alapja, hogy az előbbi sokkal kevesebbet változik, mint az utóbbi, így az objektumok (az adatokat tartalmazó entitások) jobb alapot biztosítanak egy szoftverrendszer megtervezéséhez. A cél az volt, hogy nagy fejlesztési projekteket könnyebben lehessen kezelni, így csökken az elhibázott projektek száma.
+A nyelv egyik legfontosabb tulajdonsága az objektumorientáltsága, ami a nyelv felépítésére és stílusára mutat. 
+
+TODO
+
+Az OO fontos szempontja, hogy a szoftvert ``dolgok'' (objektumok) alapján csoportosítja, nem az elvégzett feladatok a fő szempont. Ennek alapja, hogy az előbbi sokkal kevesebbet változik, mint az utóbbi, így az objektumok (az adatokat tartalmazó entitások) jobb alapot biztosítanak egy szoftverrendszer megtervezéséhez. A cél az volt, hogy nagy fejlesztési projekteket könnyebben lehessen kezelni, így csökken az elhibázott projektek száma.
 
 \subsection{Platformfüggetlenség}
 \label{platformfugg}
 
+``Write once, run anywhere.''
+
+\vspace{2mm}
 Ez a tulajdonság azt jelenti, hogy a Java-ban írt programok a legtöbb hardveren ugyanúgy futnak. Ezt úgy érik el, hogy a Java fordítóprogram a forráskódot csak egy úgynevezett Java bájtkódra fordítja le. Léteznek továbbá szabványos könyvtárcsomagok, amelyek, - közvetítve a kód és a gép között, - egységes funkcionalitásként teszik elérhetővé az illető hardver sajátságosságait (grafika, szálak és hálózat).
 
 \vspace{2mm}
@@ -559,22 +577,6 @@ GNU General Public License for more details.
 \noindent
 You should have received a copy of the GNU General Public License
 along with COPCONTROLLER. If not, see <http://www.gnu.org/licenses/>.
-
-\noindent
-CSTS is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-\noindent
-CSTS is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-\noindent
-You should have received a copy of the GNU General Public License
-along with CSTS. If not, see <http://www.gnu.org/licenses/>.
 
 
 
