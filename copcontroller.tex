@@ -165,10 +165,10 @@ A fent említettek alapján tisztán látszik, hogy az autóipar szemléletvált
 Ezeket a kérdéseket is megválaszolja az Okos városok kutatási területe, mely eredményei egyre inkább láthatóak a mindennapi életben is. Talán az egyik legfontosabb kérdés ez ügyben a városi közlekedés. Ahogy nő a népesség, úgy nő azok az emberek (és kocsik) száma akik a város infrastruktúráját, illetve úthálózatát használják. Hogyan tud segíteni a városi management, hogy az ott élők a lehető leghatékonyabban tudjanak közlekedni? Ezt a kérdést válaszolja meg a smart traffic management.
 
 \vspace{2mm}
-Az Smart City Research and Development terület láthatóan fontos szerepet fog kapni az elkövetkezendő 10-20 évben. Előrejelzések azt mutatják, hogy 2023-ra több mint 170 milliárd USD beruházás valósul meg a világon \cite{navigant}. Az informatikai fejlesztések ezen a téren már egyre jobban beférkőztek a hétköznapokba is, mint például az iCity \cite{icity}, a FI\-Ware \cite{fiware}, vagy a \cite{vital}. Ezeken túl egyre többen kísérleteznek azzal, hogy a város embereinek a mindennapjait hatékonyabbá és biztonságosabbá varázsolja (\cite{myneighbourhood}, \cite{futureglasgow}, \cite{smartsantander}). 
+Az Smart City Research and Development terület láthatóan fontos szerepet fog kapni az elkövetkezendő 10-20 évben. Előrejelzések azt mutatják, hogy 2023-ra több mint 170 milliárd USD beruházás valósul meg a világon \cite{navigant}. Az informatikai fejlesztések ezen a téren már egyre jobban beférkőztek a hétköznapokba is, mint például az iCity \cite{icity}, a FI\-Ware \cite{fiware}, vagy a \cite{vital}. Ezeken túl egyre többen kísérleteznek azzal, hogy a város embereinek a mindennapjait hatékonyabbá és biztonságosabbá varázsolja (\cite{myneighbourhood}, \cite{smartsantander}). 
 
 \vspace{2mm}
-Sok tanulmány foglalkozik még azzal, hogy hogyan lehetne egy városnak az ``okosságát'' megmérni (\cite{de2014smart}, \cite{carli2013measuring}, \cite{neirotti2014current}). A városok ``okosságáról'' még egy sorrendet is készítettek \cite{giffinger2007smart}. Az okos városokban a vészhelyzetek megoldása is fontos szerepet kap \cite{du2012research}.
+Sok tanulmány foglalkozik még azzal, hogy hogyan lehetne egy városnak az ``okosságát'' megmérni (\cite{de2014smart}, \cite{carli2013measuring}). A városok ``okosságáról'' még egy sorrendet is készítettek \cite{giffinger2007smart}. Az okos városokban a vészhelyzetek megoldása is fontos szerepet kap \cite{du2012research}.
 
 \chapter{A Robocar World Championship (OOCWC)}
 \label{oocwc}
@@ -287,7 +287,7 @@ Ahogy a \ref{dataflowpicture}. ábrán látható, ahogy folyik a szimuláció a 
 \end{figure}
 
 \vspace{2mm}
-Az alkalmazás oldaláról több funkciót is lehet lehet használni. Ezekről többet a \ref{functions}. fejezetben olvashatsz. Ezek a funkciók azonnal feldolgozásra kerülnek a szerveren, így a változás azonnal látható lesz.
+Az alkalmazás oldaláról több funkciót is lehet használni. Ezekről többet a \ref{functions}. fejezetben olvashatsz. Ezek a funkciók azonnal feldolgozásra kerülnek a szerveren, így a változás azonnal látható lesz.
 
 \newpage
 \chapter{Felhasznált technológiák}
@@ -340,34 +340,33 @@ Az 1990-es évek elején a hálózati számítás kierjesztése a mindennapi él
 \subsection{Objektumorientáltság}
 \label{oo}
 
-A nyelv egyik legfontosabb tulajdonsága az objektumorientáltsága, ami a nyelv felépítésére és stílusára mutat. 
+A Java nyelv egyik legfontosabb tulajdonsága az objektumorientáltsága, ami a nyelv felépítésére és stílusára is mutat. 
 
-TODO
+\vspace{2mm}
+A C++ nyelvvel ellentétben (lásd: \ref{cplusplus}. fejezet) a Java teljesen objektum-orientált: minden egyes Java programnak szüksége van legalább egy osztály jelenlétére. Továbbá a Java eredeti nyelv-definíciója magában foglalja az ``objektum-orientált'' kiejezést.
 
-Az OO fontos szempontja, hogy a szoftvert ``dolgok'' (objektumok) alapján csoportosítja, nem az elvégzett feladatok a fő szempont. Ennek alapja, hogy az előbbi sokkal kevesebbet változik, mint az utóbbi, így az objektumok (az adatokat tartalmazó entitások) jobb alapot biztosítanak egy szoftverrendszer megtervezéséhez. A cél az volt, hogy nagy fejlesztési projekteket könnyebben lehessen kezelni, így csökken az elhibázott projektek száma.
+\vspace{2mm}
+Az Objektum Orientált Programozás (röviden OOP) egyik fontos alapköve az egységbezárás (encapsulation). Mikor egy objektumot létrehozunk egy objektum-orientált nyelven, el tudjuk rejteni az objektum belső működésének a komplexitását a külső világ elől, így a külső világnak csak elég csak az objektum felhasználását ``tudnia''.
+
+\vspace{2mm}
+Másik fontos alapköve az öröklődés (inheritance). Az objektumok származtatása egy szülő-objektumból (superclass) azt a célt szolgálja, hogy a gyerek-objektumok (subclass) átveszik a superclass látható tulajdonságait és metódusait, miközben a kiejezetten csak rájuk tartozó saját tulajdonságokat, illetve metódusokat is tartalmaznak.
 
 \subsection{Platformfüggetlenség}
 \label{platformfugg}
 
-``Write once, run anywhere.''
-
-
-TODO
+``Write once, run anywhere'' \cite{wora}.
 
 \vspace{2mm}
-Ez a tulajdonság azt jelenti, hogy a Java-ban írt programok a legtöbb hardveren ugyanúgy futnak. Ezt úgy érik el, hogy a Java fordítóprogram a forráskódot csak egy úgynevezett Java bájt kódra fordítja le. Léteznek továbbá szabványos könyvtárcsomagok, amelyek, - közvetítve a kód és a gép között, - egységes funkcionalitásként teszik elérhetővé az illető hardver sajátságosságait (grafika, szálak és hálózat).
+Általában a lefordított kód pontosan az az instrukcióhalmaz ami szükséges a processzor számára a program ``futtatásához''. A Java esetében azonban ez az utasításhalmaz egy virtuális processzorhoz van lefordítva, melynek működnie kell bármely fizikai számítógépen.
 
 \vspace{2mm}
-Vannak olyan Java fordítóprogramok, amelyek a forráskódot natív gépi kódra fordítják le, - ilyen például a GCJ, - ezzel valamelyest felgyorsítva annak futtatását. Cserébe a lefordított program elveszíti hordozhatóságát.
+A Java esetében a fizikai processzor futtatja a a JVM-et (Java Virtual Machine) ami platformfüggő. Ez a virtuális gép fogja aztán futtatni a Java bájtkódot, ami azonban már platformfüggetlen. 
 
 \vspace{2mm}
-Egyes cégek, mint például a Microsoft, mégis platformfüggő sajátságokat adtak a nyelvhez, amire a Sun keményen reagált: beperelte a Microsoftot (az amerikai bíróság 20 millió dollár kártérítésre és a sajátos tulajdonságok visszavonására kötelezte a céget). Válaszként a Microsoft kihagyta a Java rendszert a jövőbeli termékekből és Windows-változatokból. Ez azt jelenti, hogy az Internet Explorer webböngésző alapváltozataiból hiányzik a Java. Így abban az olyan weboldalak, amelyek Java-t használnak, nem fognak helyesen megjelenni. A Windows-felhasználók e problémáját megoldva a Sun és más cégek ingyenesen letölthetővé tették a JVM rendszert azon Windows-változatok számára, amelyekből a virtuális gép hiányzik.
+Az egyetlen mód arra, hogy a Java bájtkódok valóban bármely JVM-en fussanak, az a szigorú szabvány arról, hogyan működnek a Java Virtuális Gépek. Ez azt jelenti hogy bármilyen fizikai platformot használunk, a programunknak az a része, mely a JVM-mel van kapcsolatban, garantáltan csak egy módon fog működni. Mivel mindegyik JVM pontosan ugyanúgy működik, ugyanaz a kód ugyanúgy fog működni mindenhol anélkül hogy újrafordítanánk.
 
 \vspace{2mm}
-A hordozhatóság megvalósítása technikailag nagyon bonyolult. E közben a Java esetében is sok vita volt. Az ``írd meg egyszer, futtasd bárhol'' szlogenből ``írd meg egyszer, keress hibát mindenhol'' lett. 2016-ra a hordozhatóság nem okoz tovább problémát, mivel maga a Java is nyílt szabványokra épül, például: openGL, vagy Open POSIX.
-
-\vspace{2mm}
-A Java minden jelentősebb platformon elérhető (Linux, Unix, Windows, iOS).
+Természetesen van módja a platformfüggettlenségét megtörni egy Java programnak. Ilyen eset például amikor olyan konvenciót használunk, amely csak az egyik operációs rendszerre igaz (például feltételezzük azt, hogy a ``:'' a könyvtárakat elválasztó szimbólum).
 
 \subsection{Swing}
 \label{swing}
@@ -388,24 +387,23 @@ A Swinget a közeljövőben a JavaFX \cite{javafx} fogja felváltani.
 
 A JXMapViewer \cite{jxmapv} egy nyílt forráskódú Java könyvtár, ami egy Swing (\ref{swing}. fejezet) JPanelt \cite{jpanel} szolgáltat, melynek feladata a térkép betöltése, és mutatása.
 
-\vspace{2mm}
-TODO
-
 \newpage
 \section{C++}
 \label{cplusplus}
 
-A C++ egy általános célú, magas szintű programozási nyelv. Támogatja a procedurális, az objektumorientált és a generikus programozást is. Napjainkban szinte minden operációs rendszer alá létezik C++ fordító. A nyelv a C hatékonyságának megőrzése mellett törekszik a könnyebben megírható, karbantartható és újrahasznosítható kód írására, ez azonban sok kompromisszummal jár. Erre utal, hogy általánosan elterjedt a mid-level minősítése is, bár szigorú értelemben véve egyértelműen magas szintű.
+A C++ egy nyílt, ISO-szabványosított programozási nyelv. Eleinte ez nem így volt, és a nyelvnek nem volt hivatalos szabványa, és csak egy de-facto szabványt követve volt karbantartva, fejlesztve, azonban 1998 óta \cite{c++98} a nyelv szabványosítva van az ISO egy bizottsága által.
 
 \vspace{2mm}
-A nyelv tervezésénél fontos szempont volt a C-vel való kompatibilitás, ezt oly mértékben sikerült megvalósítani, hogy minden szintaktikailag helyes C program egyben egy szintaktikailag helyes C++ program is. 
+A C++ egy ``compiled'' (lefordított) nyelv. Ahhoz hogy egy C++ programot le tudjunk uttatni, elsőnek a C++ fordító segítségével platformfüggő futtatható bájtkódra kell fordítanunk a kódunkat. Ezáltal a C++ a világ egyik leggyorsabb nyelve, ha a kódunk optimalizálva van.
+
+A C++ nyelv egyik fő erőssége, hogy a programozótól függ hogy mely paradigmákat követi a probléma megoldása érdekében. A C++ támogatja a procedurális, generikus, illeve az objektum-orientált programozási paradigmákat, sok más paradigmát pedig szintén lehetővé téve ezáltal.
 
 \lstinputlisting[language=C++, caption=A klaszzikus ``Hello World!'' C++-ban, label=helloworldcpp]{src/helloworld.cpp}
 
 \subsection{Története}
 \label{cpphistory}
 
-Bjarne Stroustrup kezdte el a C++ programozási nyelv fejlesztését a C programozási nyelv kiterjesztéseként, más nyelvekből véve át megoldásokat, ötleteket. A nyelv első, nem kísérleti körülmények közt való használatára 1983-ban került sor, 1987-ben pedig nyilvánvalóvá vált, hogy a C++ szabványosítása elkerülhetetlen. Ez a folyamat 1991 júniusában kezdődött el, amikor az ISO szabványosítási kezdeményezés részévé vált. A C++ programozási nyelv szabványát 1998-ban hagyták jóvá ISO/IEC 14882:1998 \cite{c++98} (C++98) néven, a 2003-as változat kódjelzése pedig a ISO/IEC 14882:2003 \cite{c++03} (C++03) lett. Az ezt követő 2011-es változatot ISO/IEC 14882:2011 \cite{c++11} (C++11) kódjelzéssel hagyták jóvá. A jelenlegi legfrissebb változata a 2014-es ISO/IEC 14882:2014 \cite{c++14} (C++14) kódjelzésű verzió. 
+TODO
 
 \subsection{Boost library}
 \label{boost}
@@ -427,51 +425,20 @@ Az OOCWC (\ref{oocwc}. fejezet) számára az egyik legfontosabb ilyen könyvtár
 \section{Maven}
 \label{maven}
 
-Az Apache Maven (röviden Maven) egy szoftver, amelyet szoftverprojektek menedzselésére és a build folyamat automatizálására lehet használni. Jason van Zyl készítette 2002-ben. Funkcionalitásában hasonlít az Apache Ant eszközhöz. A projektet az Apache Software Foundation hosztolja, ahol korábban a Jakarta Projekt részeként működött.
-
-\vspace{2mm}
-A Maven bevezeti a POM, azaz a Projekt Objektummodell (angolul: Project Object Model) fogalmát. Egy POM egy buildelendő projektet ír le és annak függőségeit. Az egyes lépéseket céloknak, angolul goal-oknak nevezik. Vannak előre definiált célok a tipikus feladatokra, mint például a kód fordítása és csomagolása, de a felhasználónak lehetősége van saját célokat is definiálni a projektspecifikus lépések végrehajtására.
-
-\vspace{2mm}
-A Maven hálózatképes, tehát szükség esetén dinamikusan is le tud tölteni komponenseket. Repository névvel illetik a különböző hosztok fájlrendszereinek azon mappáit, ahol a letölthető komponensek találhatók. A Maven nem csak a repository-kból való letöltést támogatja, hanem a készült szoftvercsomag feltöltését is. Ezzel az automatizálható le- és feltöltési mechanizmussal a Maven de facto szabványt próbál teremteni, de elég lassan fogadja el a Java közösség.
-
-\vspace{2mm}
-A Maven-nek léteznek beépülő moduljai számos népszerű IDE-höz, melyek integrációt nyújtanak a Maven-nel való az IDE build mechanizmusához, kódszerkesztő eszközeihez. Ezekkel lehetőség van az IDE-ből lefordítani a projekteket, és beállítani a classpath-ot a kód kiegészítéshez ill. fordító hibák színezéséhez stb. Ilyen IDE például az Eclipse, illetve a NetBeans is.
+TODO
 
 \newpage
 \section{Git}
 \label{git}
 
-A Git egy nyílt forráskódú, elosztott verziókezelő szoftver, vagy másképpen egy szoftverforráskód-kezelő rendszer, amely a sebességre helyezi a hangsúlyt. A Gitet eredetileg Linus Torvalds fejlesztette ki a Linux kernel fejlesztéséhez. Minden Git munkamásolat egy teljes értékű repository teljes verziótörténettel és teljes revíziókövetési lehetőséggel, amely nem függ a hálózat elérésétől vagy központi szervertől.
-
-\vspace{2mm}
-Számos nagy volumenű projekt használja jelenleg a Gitet verziókezelő rendszerként; a legfontosabbak ezek közül: Linux-rendszermag, GNOME, Samba, X.org, Qt. A Git karbantartásának felügyeletét jelenleg Junio Hamano látja el.
-
-\vspace{2mm}
-A Git rendszerét a BitKeeper és a Monotone ihlette. Eredetileg alacsony szintű verziókövető rendszernek tervezték, azonban teljes értékű revíziókövető rendszerré szélesedett, amelyet már közvetlenül is lehet használni. Torvalds, aki jártas a nagy, szétosztott fejlesztési projektekben és a fájlrendszerekben, és gyorsan akart működő rendszert fejleszteni, ezekre az elvekre alapozta a Gitet:
-
-\begin{itemize}
-\item A nemlineáris fejlesztés erős támogatása. A Git támogatja az ágak (branchek) készítését, összefésülésüket, és tartalmaz eszközöket a nem-lineáris fejlesztési történet ábrázolására.
-\item Elosztott fejlesztés. A Git minden fejlesztő helyi munkaváltozatában rendelkezésre bocsátja a teljes addigi fejlesztési történetet, és a változtatások másolása mindig két repository között történik. Ezeket a változtatásokat, mint külön ágakat importálják és összefésülhetőek, hasonlóan a helyben létrehozott fejlesztési branchokhoz.
-\item Nagy objektumok hatékony használata.
-\item Kriptográfiailag hitelesített történet. A Git-történet olyan módon tárolódik, hogy a szóban forgó revízió neve függ a hozzá vezető fejlesztési történettől. Ha egyszer publikálták, akkor már nem lehetséges észrevétlenül megváltoztatni egy régi revíziót. A struktúra hasonlatos a hash-fához, de hozzáadott adatokkal az egyes csomópontokon és leveleken.
-\item Eszközkészlet-szerű megoldás. A Git maga C-ben írt programok halmaza, számos shell-szkripttel megtűzdelve, amelyek összefűzik ezeket a C-ben írt programokat. Annak ellenére, hogy a szkriptek többségét újraírták C-ben a Microsoft Windowsra való portolás eredményeként, a struktúra megmaradt, és továbbra is könnyű az egyes komponenseket láncba rendezni az igényeknek megfelelően.
-\end{itemize}
+TODO
 
 
-
+\newpage
 \section{OpentStreetMap (OSM)}
 \label{osm}
 
-Az OpenStreetMap (OSM) csoportmunkán alapuló térképfejlesztés, melynek célja egy szabadon szerkeszthető és felhasználható térkép készítése az egész világról.
-
-\vspace{2mm}
-A térképek hordozható GPS eszközökből, légifotókból, szabadon használható, nemzeti kormányzati nyilvántartásokból és egyéb szabad forrásokból származó adatok, vagy egyszerű helyismeret alapján készültek. A térinformatikai adatbázis teljes tartalma Open Database License licenc alatt érhető el letöltésre \cite{odbl} (a konkrétan megrajzolt térképrészletek általában változatos szabad licencek alatt attól függően, hogy azokat ki rajzolta az adatbázisból).
-
-\vspace{2mm}
-Az OpenStreetMapot olyan oldalak ihlették, mint a Wikipédia – a térkép-megjelenítésnél elérhető egy jellegzetes ``Szerkesztés'' fül, és a változtatások teljes története is rendelkezésre áll. A regisztrált felhasználók feltölthetnek GPS nyomvonalakat, és szerkeszthetik a vektoros adatokat adott szerkesztőeszközök használatával.
-
-A \url{www.openstreetmap.org} \cite{osm} címen a regisztrációt követően bárki elkezdheti a szerkesztést. A GPS készülékkel vagy PDA-val személyesen gyűjtött adatokat GPX formátumban lehet a megadott oldalra feltölteni, majd a rögzített pontok alapján a tereptárgyakat megrajzolni és beazonosítani. A projektben résztvevők térképező hétvégéket szoktak szervezni egy-egy kiemelt terület felmérésére. A projektnek már 2006-ban több magyar tagja volt, pedig akkor a szerkesztők száma még csak kb. 1000 volt.
+TODO
 
 \newpage
 \chapter{Az alkalmazás (Cop Controller)}
@@ -580,8 +547,6 @@ GNU General Public License for more details.
 \noindent
 You should have received a copy of the GNU General Public License
 along with COPCONTROLLER. If not, see <http://www.gnu.org/licenses/>.
-
-
 
 \chapter*{Köszönetnyilvánítás}
 \addcontentsline{toc}{chapter}{Köszönetnyilvánítás}
