@@ -136,7 +136,7 @@ Debrecen
 
 \chapter{Bevezetés}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centerline{
 \includegraphics[width=6in]{img/googleauto}}
 \caption{A Google által fejlesztett robotautó. Forrás: \cite{googlecarimage}.}
@@ -149,9 +149,12 @@ A közelmúltban nagy mértékű fejlődést vehettünk észre az autógyártás
 Az elkövetkező éveket azonban várhatóan az autonóm autók nagy mértékű megjelenése és elterjedése váltja fel. Ezek az autók mellett nemrég láthattuk a Tesla új modelljének a bemutatóját is, mely ugyancsak erősíti a feltevést, miszerint az elektromos hajtású, illetve az úgynevezett ``hibrid'' hajtású kocsik előtt áll a jövő. Elektromos hajtású kocsikat manapság is láthatunk már az utcákon. Ezeket könnyen felismerhetjük a zöld hátterű rendszámtáblájukról.
 
 \vspace{2mm}
+A Drive.ai a 13. cég akik jogosítványt kaptak az autonóm kocsik teszteléséhez Kalifornia publikus utcáin. A cég az autonóm autók továbbfejlesztésén dolgozik úgy, hogy a mély-tanulást (deep-learning) alkalmazza robotautókra. Ez azért kiemelkedően fontos, mert az autonóm kocsik fejlesztésében a kemény rész a szélsőséges esetek (edge cases) megoldása. Ilyen esetek lehetnek például a havazás, vagy az eső is. Jelenleg az autonóm kocsik fejlesztői különböző szabályokat programoztak be ezekre az esetekre, azonban a mély-tanulás megközelítésével a robotautó megtanulja hogy reagáljon ezekre az esetekre azáltal, hogy a kapott adat legapróbb részét is megérti \cite{driveai}.
+
+\vspace{2mm}
 A fent említettek alapján tisztán látszik, hogy az autóipar szemléletváltás előtt áll. A nem újrahasznosítható energiaforrásokon alapuló motorokat és a vezetői élményt kezdi lassan felváltani a hosszabb távon fenntartható, újrahasznosítható energiaforrást használó motorokkal hajtott autonóm gépkocsik, mellyel az utazáshoz a pihentető időtöltés vízióját próbálják hozzárendelni.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centerline{
 \includegraphics[width=6in]{img/smartcitylogo}}
 \caption{Egy elképzelt okos város vektorgrafikus ábrázolása. Forrás: \cite{smartcitylogo}.}
@@ -165,7 +168,7 @@ A fent említettek alapján tisztán látszik, hogy az autóipar szemléletvált
 Ezeket a kérdéseket is megválaszolja az Okos városok kutatási területe, mely eredményei egyre inkább láthatóak a mindennapi életben is. Talán az egyik legfontosabb kérdés ez ügyben a városi közlekedés. Ahogy nő a népesség, úgy nő azok az emberek (és kocsik) száma akik a város infrastruktúráját, illetve úthálózatát használják. Hogyan tud segíteni a városi management, hogy az ott élők a lehető leghatékonyabban tudjanak közlekedni? Ezt a kérdést válaszolja meg a smart traffic management.
 
 \vspace{2mm}
-Az Smart City Research and Development terület láthatóan fontos szerepet fog kapni az elkövetkezendő 10-20 évben. Előrejelzések azt mutatják, hogy 2023-ra több mint 170 milliárd USD beruházás valósul meg a világon \cite{navigant}. Az informatikai fejlesztések ezen a téren már egyre jobban beférkőztek a hétköznapokba is, mint például az iCity \cite{icity}, a FI\-Ware \cite{fiware}, vagy a \cite{vital}. Ezeken túl egyre többen kísérleteznek azzal, hogy a város embereinek a mindennapjait hatékonyabbá és biztonságosabbá varázsolja (\cite{myneighbourhood}, \cite{smartsantander}). 
+Az Smart City Research and Development terület láthatóan fontos szerepet fog kapni az elkövetkezendő 10-20 évben. Előrejelzések azt mutatják, hogy 2023-ra több mint 170 milliárd USD beruházás valósul meg a világon \cite{navigant}. Az informatikai fejlesztések ezen a téren már egyre jobban beférkőztek a hétköznapokba is, mint például az iCity \cite{icity}, a FI\-Ware \cite{fiware}, vagy a \cite{vital}. Ezeken túl egyre többen kísérleteznek azzal, hogy a város embereinek a mindennapjait hatékonyabbá és biztonságosabbá varázsolja (\cite{myneighbourhood}, \cite{smartsantander}).
 
 \vspace{2mm}
 Sok tanulmány foglalkozik még azzal, hogy hogyan lehetne egy városnak az ``okosságát'' megmérni (\cite{de2014smart}, \cite{carli2013measuring}). A városok ``okosságáról'' még egy sorrendet is készítettek \cite{giffinger2007smart}. Az okos városokban a vészhelyzetek megoldása is fontos szerepet kap \cite{du2012research}.
@@ -177,7 +180,7 @@ Sok tanulmány foglalkozik még azzal, hogy hogyan lehetne egy városnak az ``ok
 
 Az OOCWC rendszer célja, hogy az autonóm autók és az okos városok közötti összefüggéseket vizsgálja, kutatási valamint oktatási célokat is szolgál. A rendszer felépítését a \ref{basedesign}. ábra szemlélteti.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centerline{
 \includegraphics[width=3.7in]{img/tetris_plan}}
 \caption{Az OOCWC rendszer tetris terve. Forrás: \cite{oocwcrepo}.}
@@ -243,13 +246,30 @@ A beállítási kapcsolók jelentése a következő:
 \item shm -- Az osztott memória neve.
 \end{itemize}
 
+\section{A rendszer működése}
+
+\subsection{Az adat áramlása}
+\label{dataflow}
+
+\begin{figure}[ht]
+\centerline{
+\includegraphics[width=4.5in]{img/dataflow}}
+\caption{Az adat áramlása az OOCWC rendszer (\ref{oocwc}. fejezet) és az alkalmazás (\ref{theapp}. fejezet) között.}
+\label{dataflowpicture}
+\end{figure}
+
+Ahogy a \ref{dataflowpicture}. ábrán látható, ahogy folyik a szimuláció a szerveren, úgy minden egyes lépésenként a szerver elküldi az aktuális állást az alkalmazásnak. Ezt a Cop Controller feldolgozza, ezáltal valós idejű képet adva a jelenleg állásról.
+
+\vspace{2mm}
+Az alkalmazás oldaláról több funkciót is lehet használni. Ezekről többet a \ref{functions}. fejezetben olvashatsz. Ezek a funkciók azonnal feldolgozásra kerülnek a szerveren, így a változás azonnal látható lesz.
+
 \section{Szükséges módosítások a projekt számára}
 \label{changes}
 
 \subsection{Az eredeti irányítás}
 \label{originalrouting}
 
-Eredetileg a rendőr-ágensek is C++ nyelven (\ref{cplusplus}. fejezet) lettek megvalósítva, ezáltal hozzáférnek az OOCWC osztott memóriájához (shared memory), amiben több adat közt megtalálható az OSM \citep{osm} (\ref{osm}. fejezet) térképből felépített irányított gráf BGL (Boost Graph Library) (\ref{boost}. fejezet). Ezt a gráfot és a Boost, gráfokra implementált, kereső algoritmusait felhasználva a rendőr-ágens képes létrehozni a szimulációs szerver által értelmezhető útkereső (routing) parancsot, mellyel a szerver a kapott parancs alapján mozgatja a megfelelő rendőr-ágenst. 
+Eredetileg a rendőr-ágensek is C++ nyelven (\ref{cplusplus}. fejezet) lettek megvalósítva, ezáltal hozzáférnek az OOCWC osztott memóriájához (shared memory), amiben több adat közt megtalálható az OSM \citep{osm} (\ref{osm}. fejezet) térképből felépített irányított gráf (BGL (Boost Graph Library)) (\ref{boost}. fejezet). Ezt a gráfot és a Boost, gráfokra implementált, kereső algoritmusait felhasználva a rendőr-ágens képes létrehozni a szimulációs szerver által értelmezhető útkereső (routing) parancsot, mellyel a szerver a kapott parancs alapján mozgatja a megfelelő rendőr-ágenst. 
 
 \vspace{2mm}
 Az eredeti parancs a következőképp néz ki: 
@@ -267,27 +287,17 @@ Ez a parancs a \ref{originalroutingsrc}. forráskódrészleten látható módon 
 Ahhoz hogy az eredeti irányításhoz hasonló mozgatást érjünk el a kívánt rendőr-ágensen, egy olyan programozási nyelvvel amelynek nincs hozzáférése az OOCWC által felépített osztott memóriához, egy új parancs bevezetésére volt szükség, amely helyettesíti az eredeti útkereső parancsot, a valódi routingot (az út megtalálását kettő csomópont között) pedig a szerverre kellett bízni.
 
 \vspace{2mm}
-Ennek a változtatásnak a bevezetésével úgy vélem hogy egy új lehetőség nyílik meg az OOCWC rendszer számára, mégpedig hogy több programozási nyelv segítségével is meg lehessen jeleníteni az aktuális állapotot, illetve lehessen irányítani a rendőr-ágenseket. (I'm looking at you, Python)
+Ennek a változtatásnak a bevezetésével úgy vélem hogy egy új lehetőség nyílik meg az OOCWC rendszer számára, mégpedig hogy több programozási nyelv segítségével is meg lehessen jeleníteni az aktuális állapotot, illetve lehessen általuk irányítani a rendőr-ágenseket. (I'm looking at you, Python)
 
 \vspace{2mm}
+Az új parancs a következőképpen néz ki:
+\begin{lstlisting}
+<inner_route [rendor-agens ID] [A cel csomopont]>
+\end{lstlisting}
+
 TODO az új parancs szintaxisának bemutatása
 
 TODO forráskód az új routingról
-
-\section{Az adat áramlása}
-\label{dataflow}
-
-Ahogy a \ref{dataflowpicture}. ábrán látható, ahogy folyik a szimuláció a szerveren, úgy minden egyes lépésenként a szerver elküldi az aktuális állást az alkalmazásnak. Ezt a Cop Controller feldolgozza, ezáltal valós idejű képet adva a jelenleg állásról.
-
-\begin{figure}[h]
-\centerline{
-\includegraphics[width=4.5in]{img/dataflow}}
-\caption{Az adat áramlása az OOCWC rendszer (\ref{oocwc}. fejezet) és az alkalmazás (\ref{theapp}. fejezet) között.}
-\label{dataflowpicture}
-\end{figure}
-
-\vspace{2mm}
-Az alkalmazás oldaláról több funkciót is lehet használni. Ezekről többet a \ref{functions}. fejezetben olvashatsz. Ezek a funkciók azonnal feldolgozásra kerülnek a szerveren, így a változás azonnal látható lesz.
 
 \newpage
 \chapter{Felhasznált technológiák}
@@ -296,7 +306,7 @@ Az alkalmazás oldaláról több funkciót is lehet használni. Ezekről többet
 \section{Java}
 \label{java}
 
-\begin{figure}
+\begin{figure}[ht]
 \centerline{
 \includegraphics[width=1.1in]{img/javalogo}}
 \caption{A Java hivatalos logója.}
@@ -326,7 +336,7 @@ A Java úgy lett kialakítva, hogy lehetővé váljon a hordozható, nagy teljes
 \item A Javában írt alkalmazások, illetve szolgáltatások, összeillesztését annak érdekében, hogy magasan személyre szabott alkalmazásokat / szolgáltatásokat fejlesszünk \cite{aboutjava}.
 \end{itemize}
 
-\lstinputlisting[language=Java, caption=A klaszzikus ``Hello World!'' Javában, label=helloworldjava]{src/helloworld.java}
+\lstinputlisting[language=Java, caption=A klasszikus ``Hello World!'' Javában, label=helloworldjava]{src/helloworld.java}
 
 
 \subsection{Története}
@@ -343,13 +353,13 @@ Az 1990-es évek elején a hálózati számítás kierjesztése a mindennapi él
 A Java nyelv egyik legfontosabb tulajdonsága az objektumorientáltsága, ami a nyelv felépítésére és stílusára is mutat. 
 
 \vspace{2mm}
-A C++ nyelvvel ellentétben (lásd: \ref{cplusplus}. fejezet) a Java teljesen objektum-orientált: minden egyes Java programnak szüksége van legalább egy osztály jelenlétére. Továbbá a Java eredeti nyelv-definíciója magában foglalja az ``objektum-orientált'' kiejezést.
+A C++ nyelvvel ellentétben (lásd: \ref{cplusplus}. fejezet) a Java teljesen objektum-orientált: minden egyes Java programnak szüksége van legalább egy osztály jelenlétére. Továbbá a Java eredeti nyelv-definíciója magában foglalja az ``objektum-orientált'' kifejezést.
 
 \vspace{2mm}
 Az Objektum Orientált Programozás (röviden OOP) egyik fontos alapköve az egységbezárás (encapsulation). Mikor egy objektumot létrehozunk egy objektum-orientált nyelven, el tudjuk rejteni az objektum belső működésének a komplexitását a külső világ elől, így a külső világnak csak elég csak az objektum felhasználását ``tudnia''.
 
 \vspace{2mm}
-Másik fontos alapköve az öröklődés (inheritance). Az objektumok származtatása egy szülő-objektumból (superclass) azt a célt szolgálja, hogy a gyerek-objektumok (subclass) átveszik a superclass látható tulajdonságait és metódusait, miközben a kiejezetten csak rájuk tartozó saját tulajdonságokat, illetve metódusokat is tartalmaznak.
+Másik fontos alapköve az öröklődés (inheritance). Az objektumok származtatása egy szülő-objektumból (superclass) azt a célt szolgálja, hogy a gyerek-objektumok (subclass) átveszik a superclass látható tulajdonságait és metódusait, miközben a kifejezetten csak rájuk tartozó saját tulajdonságokat, illetve metódusokat is tartalmaznak.
 
 \subsection{Platformfüggetlenség}
 \label{platformfugg}
@@ -360,13 +370,13 @@ Másik fontos alapköve az öröklődés (inheritance). Az objektumok származta
 Általában a lefordított kód pontosan az az instrukcióhalmaz ami szükséges a processzor számára a program ``futtatásához''. A Java esetében azonban ez az utasításhalmaz egy virtuális processzorhoz van lefordítva, melynek működnie kell bármely fizikai számítógépen.
 
 \vspace{2mm}
-A Java esetében a fizikai processzor futtatja a a JVM-et (Java Virtual Machine) ami platformfüggő. Ez a virtuális gép fogja aztán futtatni a Java bájtkódot, ami azonban már platformfüggetlen. 
+A Java esetében a fizikai processzor futtatja a JVM-et (Java Virtual Machine) ami platformfüggő. Ez a virtuális gép fogja aztán futtatni a Java bájt-kódot, ami azonban már platformfüggetlen. 
 
 \vspace{2mm}
-Az egyetlen mód arra, hogy a Java bájtkódok valóban bármely JVM-en fussanak, az a szigorú szabvány arról, hogyan működnek a Java Virtuális Gépek. Ez azt jelenti hogy bármilyen fizikai platformot használunk, a programunknak az a része, mely a JVM-mel van kapcsolatban, garantáltan csak egy módon fog működni. Mivel mindegyik JVM pontosan ugyanúgy működik, ugyanaz a kód ugyanúgy fog működni mindenhol anélkül hogy újrafordítanánk.
+Az egyetlen mód arra, hogy a Java bájt-kódok valóban bármely JVM-en fussanak, az a szigorú szabvány arról, hogyan működnek a Java Virtuális Gépek. Ez azt jelenti hogy bármilyen fizikai platformot használunk, a programunknak az a része, mely a JVM-mel van kapcsolatban, garantáltan csak egy módon fog működni. Mivel mindegyik JVM pontosan ugyanúgy működik, ugyanaz a kód ugyanúgy fog működni mindenhol anélkül hogy újrafordítanánk.
 
 \vspace{2mm}
-Természetesen van módja a platformfüggettlenségét megtörni egy Java programnak. Ilyen eset például amikor olyan konvenciót használunk, amely csak az egyik operációs rendszerre igaz (például feltételezzük azt, hogy a ``:'' a könyvtárakat elválasztó szimbólum).
+Természetesen van módja a platformfüggetlenségét megtörni egy Java programnak. Ilyen eset például amikor olyan konvenciót használunk, amely csak az egyik operációs rendszerre igaz (például feltételezzük azt, hogy a ``:'' a könyvtárakat elválasztó szimbólum).
 
 \subsection{Swing}
 \label{swing}
@@ -394,16 +404,19 @@ A JXMapViewer \cite{jxmapv} egy nyílt forráskódú Java könyvtár, ami egy Sw
 A C++ egy nyílt, ISO-szabványosított programozási nyelv. Eleinte ez nem így volt, és a nyelvnek nem volt hivatalos szabványa, és csak egy de-facto szabványt követve volt karbantartva, fejlesztve, azonban 1998 óta \cite{c++98} a nyelv szabványosítva van az ISO egy bizottsága által.
 
 \vspace{2mm}
-A C++ egy ``compiled'' (lefordított) nyelv. Ahhoz hogy egy C++ programot le tudjunk uttatni, elsőnek a C++ fordító segítségével platformfüggő futtatható bájtkódra kell fordítanunk a kódunkat. Ezáltal a C++ a világ egyik leggyorsabb nyelve, ha a kódunk optimalizálva van.
+A C++ egy ``compiled'' (lefordított) nyelv. Ahhoz hogy egy C++ programot le tudjunk futtatni, elsőnek a C++ fordító segítségével platformfüggő futtatható bájt-kódra kell fordítanunk a kódunkat. Ezáltal a C++ a világ egyik leggyorsabb nyelve, ha a kódunk optimalizálva van.
 
-A C++ nyelv egyik fő erőssége, hogy a programozótól függ hogy mely paradigmákat követi a probléma megoldása érdekében. A C++ támogatja a procedurális, generikus, illeve az objektum-orientált programozási paradigmákat, sok más paradigmát pedig szintén lehetővé téve ezáltal.
+A C++ nyelv egyik fő erőssége, hogy a programozótól függ hogy mely paradigmákat követi a probléma megoldása érdekében. A C++ támogatja a procedurális, generikus, illetve az objektum-orientált programozási paradigmákat, sok más paradigmát pedig szintén lehetővé téve ezáltal.
 
-\lstinputlisting[language=C++, caption=A klaszzikus ``Hello World!'' C++-ban, label=helloworldcpp]{src/helloworld.cpp}
+\lstinputlisting[language=C++, caption=A klasszikus ``Hello World!'' C++-ban, label=helloworldcpp]{src/helloworld.cpp}
 
 \subsection{Története}
 \label{cpphistory}
 
-TODO
+A korai '80-as években, a Bell Laboratories cégnél, egy új programozási nyelvet kezdtek el fejleszteni, ami a C nyelvet vette alapul. Ennek az új nyelvnek a fejlesztője Bjarne Stroustrup volt, aki C++-nak keresztelte el az ``új'' nyelvet. Stroustrup azt állította, hogy a C++ célja az, hogy könnyítse és kellemesebbé tegye a jó programok írását. Amikor a nyelvet tervezte, belecsempészte az OOP (objektumorientált programozás) jellemzőit anélkül hogy nagyon módosításokra lett volna szükség a C kódjában. Így a C egy részhalmaza a C++-nak, tehát bármely érvényes C program egyben érvényes C++ program is.
+
+\vspace{2mm}
+Idővel ahogy egyre jobban fejlődött a nyelv, elkerülhetetlenné vált a szabványosítás. A C++ 1991-ben indult el a szabványosítás útján, majd 1998-ban az ISO szabványosításba bekerült ``ISO/IEC 14882:1998'' néven \cite{c++98}. A következő szabványt 2003-ban fogadták el ``ISO/IEC 14882:2003'' kódnévvel \cite{c++03}. 8 éve elteltével a következő szabványt is elfogadták, amit ``ISO/IEC 14882:2011'' kódjelzéssel láttak el \cite{c++11}. A legújabb C++ szabvány a röviden C++14 névre hallgató, ``ISO/IEC 14882:2014'' kódú szabvány \cite{c++14}.
 
 \subsection{Boost library}
 \label{boost}
@@ -416,7 +429,7 @@ TODO
 \end{figure}
 
 \vspace{2mm}
-A Boost a C++ programozási nyelvhez ad támogatást olyan könyvtárakkal, melyek különböző területek különböző problémáit segítenek megoldani. Többek között ilyen területek a lineáris algebra, a pseudorandom számok generálása, a többszálasítás, a képfeldolgozás, a reguláris kiejezések, illetve a unittesztelés. 
+A Boost a C++ programozási nyelvhez ad támogatást olyan könyvtárakkal, melyek különböző területek különböző problémáit segítenek megoldani. Többek között ilyen területek a lineáris algebra, a pszeudorandom számok generálása, a több-szálasítás, a képfeldolgozás, a reguláris kifejezések, illetve a unittesztelés. 
 
 \vspace{2mm}
 Az OOCWC (\ref{oocwc}. fejezet) számára az egyik legfontosabb ilyen könyvtár a BGL (Boost Graph Library) \cite{bgl}, melynek segítségével épül fel az OpenStreetMap \cite{osm} (\ref{osm}. fejezet) térkép alapján az OOCWC irányított gráfja.
@@ -425,14 +438,46 @@ Az OOCWC (\ref{oocwc}. fejezet) számára az egyik legfontosabb ilyen könyvtár
 \section{Maven}
 \label{maven}
 
+\begin{figure}[ht]
+\centerline{
+\includegraphics[width=3.6in]{img/mavenlogo}}
+\caption{A Maven logója. Forrás: \cite{mavenlogo}.}
+\label{boostlogo}
+\end{figure}
+
+A Maven eredetileg egy kísérletként indult azzal a céllal, hogy a Jakarta Turbine projekt \cite{turbine} build folyamatait egyszerűsítsék. Több projekt volt a saját Ant \cite{ant} build fájljaival, melyek alig voltak különbözőek. A Maven célja az (volt), hogy létrehozzon egy szabványosított módszert arra, hogy:
+
+\begin{itemize}
+\item hogyan legyenek a projektek buildelve,
+\item tiszta és egyértelmű leírás legyen a projekt tartalmát tekintve,
+\item könnyen lehessen a projekt információit megosztani,
+\item és hogy több projekten keresztül tudjunk JAR fájlokat megosztani.
+\end{itemize}
+
+Az eredmény végül egy olyan eszköz lett, mellyel bármely Java alapú projektet tudjuk buildelni és kezelni.
+
+A Maven első számú célja az, hogy lehetővé tegye a fejlesztő számára, hogy a lehető legrövidebb idő alatt megértse a fejlesztés szükségleteinek a teljes állapotát \cite{aboutmaven}. 
+
 TODO
 
 \newpage
 \section{Git}
 \label{git}
 
-TODO
+\begin{figure}[ht]
+\centerline{
+\includegraphics[width=3.6in]{img/gitlogo}}
+\caption{A Git logója. Forrás: \cite{gitlogo}.}
+\label{boostlogo}
+\end{figure}
 
+A Git egy verziókezelő rendszer, melyet széles körben használnak a szoftverfejlesztésnél és egyéb verziókövetési feladatoknál. Ez egy elosztott forráskódkezelő rendszer, melynél nagy hangsúlyt kap a sebesség \cite{gitspeed}, az adatok integritása \cite{gitdata}, és az elosztott, nem lineáris munkafolyamatok támogatása. A Gitet eredetileg 2005-ben tervezték és fejlesztették a Linux kernel fejlesztői a kernel fejlesztésének támogatására.
+
+\vspace{2mm}
+Mint a legtöbb elosztott verziókövető rendszereknél, és ellentétben a legtöbb kliens-szerver rendszerekkel, minden egyes Git munkakönyvtár egy teljes értékű Git tároló, teljes előzménnyel, és teljes verzió-követési képességgel, ami független a hálózati hozzáféréstől, vagy a központi szervertől.
+
+\vspace{2mm}
+A Gitet elsőnek egy alacsony szintű verziókezelő rendszernek tervezték, amire aztán az emberek a saját ízlésüknek megfelelő front-endet fejleszthettek. Ilyen például a Cogito \cite{cogito}. A Git magja azóta már egy komplett verziókezelő rendszerré vált, ami már önmagában is használható. Bár a fejlesztést erősen befolyásolta a BitKeeper \cite{bitkeeper}, Torvalds szándékosan kerülte a hagyományos megközelítéseket, amelynek köszönhetően a Git egy egyedi struktúrával jött létre \cite{gitunique}.
 
 \newpage
 \section{OpentStreetMap (OSM)}
@@ -444,7 +489,7 @@ TODO
 \chapter{Az alkalmazás (Cop Controller)}
 \label{theapp}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centerline{
 \includegraphics[width=6in]{img/copselected}}
 \caption{Pillanatkép a rendszer ``Police Edition'' változatának a projekt szerinti módosításával (lásd: \ref{theapp}. fejezet). A térkép az OSM egy részlete, Debrecen, Hajdú-Bihar Megye, Magyarország. A megjelenítést a JXMapViewer2 \cite{jxmapv} biztosítja. A térképen a routine car rózsaszínnel, a gengszter ágensek pirossal (smart car), a rendőrágensek (guided car) kékkel jelölve. Az éppen kiválasztott rendőr-ágens melyet éppen irányítunk pedig el van látva a ``SELECTED'' felirattal. Forrás: \cite{infocomjournal} 
@@ -506,7 +551,7 @@ Ezeknek a megoldásoknak az előnye hogy a parancsok egy teljesen különböző 
 Miután már van saját rendőrünk a szimulációban (lásd: \ref{addcops}. fejezet), Tudjuk őket irányítani is.
 
 \vspace{2mm}
-Alaphelyzetben nincs egy rendőr se kiválasztva. Ahhoz hogy egy rendőr-ágenst irányítani tudjunk egy rendőr közelébe kell kattintanunk a bal egérgombbal, és légvonalban 2500 méteren belül kell lennie a kattintás térképre vetített pontjának a rendőr helyzetétől. Amennyiben már volt kijelölve egy rendőr, de le szeretnénk venni a jelölést, úgy egyszerűen csak egy olyan pontra kell kattintanunk, amely nem esik bele egy rendőr 2,5 kilóméteres körébe sem. Ennek a megvalósítása a \ref{selectcop}. forráskódrészleten látható.
+Alaphelyzetben nincs egy rendőr se kiválasztva. Ahhoz hogy egy rendőr-ágenst irányítani tudjunk egy rendőr közelébe kell kattintanunk a bal egérgombbal, és légvonalban 2500 méteren belül kell lennie a kattintás térképre vetített pontjának a rendőr helyzetétől. Amennyiben már volt kijelölve egy rendőr, de le szeretnénk venni a jelölést, úgy egyszerűen csak egy olyan pontra kell kattintanunk, amely nem esik bele egy rendőr 2,5 kilométeres körébe sem. Ennek a megvalósítása a \ref{selectcop}. forráskódrészleten látható.
 
 \lstinputlisting[language=Java, caption=A legközelebbi rendőr kiválasztása amennyiben az 2500 méteren belül tartózkodik., label=selectcop]{src/selectcop.java}
 
@@ -514,7 +559,15 @@ Alaphelyzetben nincs egy rendőr se kiválasztva. Ahhoz hogy egy rendőr-ágenst
 \chapter{Jövőbeli munka}
 \label{futureworks}
 
-TODO további lehetséges fejlesztések részletezése
+<TODO szépen leírni>
+
+Mesterséges intelligencia alkalmazása a rendőrök irányítására Java oldalon. 
+
+A program többszálasítása, ahol az egyik szál a megjelenítésért felel, a másik szálon pedig a parancsokat tudnánk küldeni a servernek. Egyelőre nem lehetséges mert 2 egymás mellett futó traffic serverre lenne hozzá szükség, mert jelenleg a 2 szál ugyanarra a socketre bindolna mert ugyanaz a hostname és a port is egy traffic server esetén. 
+
+Spring alapú webszerverré is tovább lehetne fejleszteni, amivel egy webalkalmazássá formálnánk a programot. Ekkor különválik egy backendre (Spring a már meglévő business logic-kal a megjelenítés nélkül) és egy frontendre (AngularJS + Bootstrap | megjelenítés + irányítás). Ez azért lenne érdekes mert egyszerre akár az összes versenyző tudná valós időben irányítani a rendőreit. 
+
+</TODO szépen leírni>
 
 \newpage
 \chapter{Összefoglalás}
