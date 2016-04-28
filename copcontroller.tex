@@ -149,7 +149,7 @@ A közelmúltban nagy mértékű fejlődést vehettünk észre az autógyártás
 Az elkövetkező éveket azonban várhatóan az autonóm autók nagy mértékű megjelenése és elterjedése váltja fel. Ezek az autók mellett nemrég láthattuk a Tesla új modelljének a bemutatóját is, mely ugyancsak erősíti a feltevést, miszerint az elektromos hajtású, illetve az úgynevezett ``hibrid'' hajtású kocsik előtt áll a jövő. Elektromos hajtású kocsikat manapság is láthatunk már az utcákon. Ezeket könnyen felismerhetjük a zöld hátterű rendszámtáblájukról.
 
 \vspace{2mm}
-A Drive.ai a 13. cég akik jogosítványt kaptak az autonóm kocsik teszteléséhez Kalifornia publikus utcáin. A cég az autonóm autók továbbfejlesztésén dolgozik úgy, hogy a mély-tanulást (deep-learning) alkalmazza robotautókra. Ez azért kiemelkedően fontos, mert az autonóm kocsik fejlesztésében a kemény rész a szélsőséges esetek (edge cases) megoldása. Ilyen esetek lehetnek például a havazás, vagy az eső is. Jelenleg az autonóm kocsik fejlesztői különböző szabályokat programoztak be ezekre az esetekre, azonban a mély-tanulás megközelítésével a robotautó megtanulja hogy reagáljon ezekre az esetekre azáltal, hogy a kapott adat teljes egészét próbálja megérteni, és a már megtanult adat alapján reagál rá. \cite{driveai}.
+A Drive.ai a 13. cég akik jogosítványt kaptak az autonóm kocsik teszteléséhez Kalifornia publikus utcáin. A cég az autonóm autók továbbfejlesztésén dolgozik úgy, hogy a mély-tanulást (deep-learning) alkalmazza robotautókra. Ez azért kiemelkedően fontos, mert az autonóm kocsik fejlesztésében a kemény rész a szélsőséges esetek (edge cases) megoldása, tehát hogy mit tegyen az autó amikor hirtelen csúszós lesz az út, vagy éppen rosszak a látásviszonyok. Jelenleg az autonóm kocsik fejlesztői különböző szabályokat programoznak be ezekre az esetekre, azonban a mély-tanulás megközelítésével a robotautó megtanulja hogyan reagáljon a különböző esetekre azáltal, hogy a kapott adat teljes egészét próbálja megérteni, és a már megtanult adat alapján reagál rá. \cite{driveai}.
 
 \vspace{2mm}
 A fent említettek alapján tisztán látszik, hogy az autóipar szemléletváltás előtt áll. A nem újrahasznosítható energiaforrásokon alapuló motorokat és a vezetői élményt kezdi lassan felváltani a hosszabb távon fenntartható, újrahasznosítható energiaforrást használó motorokkal hajtott autonóm gépkocsik, mellyel az utazáshoz a pihentető időtöltés vízióját próbálják hozzárendelni.
@@ -233,8 +233,11 @@ Itt a kapcsolók a következő beállításokat jelentik:
 \item osm -- Az OpenStreetMap térkép elérési útvonala.
 \item city -- A szimulált város neve.
 \item shm -- Az osztott memória elérési neve.
+\item node2gps -- Az OSM térképén belüli csomópontokhoz tartozó GPS koordinátákat ebbe a fájlba írja ki.
+\label{node2gps}
 \end{itemize}
 
+\vspace{2mm}
 Amennyiben a SmartCity kimenetén megjelenik hogy ``Ready'', úgy folytathatjuk a következő lépéssel, a szimulációs szerver elindításával, melynek a parancsát a \ref{starttraffic}. forráskódban láthatjuk.
 
 \lstinputlisting[language=bash, caption=A szimulációs szerver elindítása, label=starttraffic]{src/traffic.sh}
@@ -295,9 +298,9 @@ Az új parancs a következőképpen néz ki:
 <inner_route [rendor-agens ID] [A cel csomopont]>
 \end{lstlisting}
 
-TODO az új parancs szintaxisának bemutatása
+A parancs feldolgozása után a traffic server gondoskodik a rendőr-ágens irányításáról. Lásd: \ref{newroutingsrc}. forráskódrészlet.
 
-TODO forráskód az új routingról
+\lstinputlisting[language=C++, caption=Az új routing forráskód részlete, label=newroutingsrc]{src/newroutingcmd.cpp}
 
 \newpage
 \chapter{Felhasznált technológiák}
@@ -511,7 +514,7 @@ A mai napra már annyira megbízható térképpé nőtte ki magát az OpenStreet
 \label{oldworcester}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[ht]
 \centering
 \includegraphics[width=5in]{img/newworcester}
 \caption{Worcester képe az OpenStreetMap térképen napjainkban. Forrás: \cite{osm}.}
@@ -532,7 +535,7 @@ A mai napra már annyira megbízható térképpé nőtte ki magát az OpenStreet
 Ennek a projektnek a célja az, hogy az OOCWC (\ref{oocwc}. fejezet) kvalifikációs (illetve a bátrabbaknak a verseny) részét (is) valósidejű irányítás válthassa ki, ezáltal érdekesebbé, és kézügyességtől (is) függővé válik a gengszterek elkapása.
 
 \vspace{2mm}
-A projekt egy Maven (\ref{maven}. fejezet) által menedzselt Java (\ref{java}. fejezet) alkalmazás, amihez egy Swing (\ref{swing}. fejezet) grafikus felhasználói felület (Graphic User Interface) tartozik. Továbbá a Maven felelős a projekt dependenciáinak (dependency) a megfelelő verziószámú letöltéséért is. 
+A projekt egy Maven (\ref{maven}. fejezet) által menedzselt Java (\ref{java}. fejezet) alkalmazás, amihez egy Swing (\ref{swing}. fejezet) grafikus felhasználói felület (Graphic User Interface) tartozik. A projekt függőségeit pedig a Maven tartja karban a \url{pom.xml} fájl alapján. 
 
 \vspace{2mm}
 Ilyen függőség például JXMapViewer2 \cite{jxmapv} (\ref{jxmapviewer}. fejezet)).
@@ -541,18 +544,48 @@ Ilyen függőség például JXMapViewer2 \cite{jxmapv} (\ref{jxmapviewer}. fejez
 \section{Az alkalmazás elindítása}
 \label{howtorun}
 
-TODO képek importálásról + parancsok
+Az alkalmazás jelenlegi változata az Eclipse IDE alatt fut hibamentesen. Ennek az okát, illetve lehetséges javítására ötletet a \ref{futureworks}. fejezetben lehet olvasni. 
+
+\vspace{2mm}
+Az alkalmazást az Eclipse elindítása után a ``File'' menüponton belül az ``Import...''-ot választva tudjuk maven projektként importálni.
+
+\vspace{2mm}
+Miután felugrott az ehhez kapcsolódó panel, válasszuk ki az ``Existing Maven Projects'' opciót (lásd: \ref{importmaven1}. ábra).
+
+\begin{figure}[ht]
+\centerline{
+\includegraphics[width=5in]{img/importmavenproject}}
+\caption{Maven project importálása Eclipse IDE-be. 1. rész.}
+\label{importmaven1}
+\end{figure}
+
+\vspace{2mm}
+Miután ``Next''-re kattintottunk meg kell adnunk a relatív elérési útját a mappának melyben \url{pom.xml} fájl van. Mután azt megadtuk az Eclipse be tudja importálni a projektet (lásd \ref{importmaven2}. ábra).
+
+\begin{figure}[ht]
+\centerline{
+\includegraphics[width=6in]{img/importmavenproject2}}
+\caption{Maven project importálása Eclipse IDE-be. 2. rész.}
+\label{importmaven2}
+\end{figure}
+
+Importálás után a \url{CopController.launch} futtatási konfigurációban módosítani kell a \url{PROGRAM_ARGUMENTS} kulcs értékét a SmartCity --node2gps kapcsolója által létrehozott fájlnak a relatív elérési útjára.
+
+\vspace{2mm}
+A módosítás elvégzése után futtathatjuk a konfigurációs fájlunkat, melynek tartalmát a \ref{launchconfig}. forráskódrészletben láthatunk.
+
+\lstinputlisting[language=xml, caption=A CopController.launch futtatási konfigurációja, label=launchconfig]{src/CopController.launch}
 
 \section{Az alkalmazás funkciói}
 \label{functions}
 
-
 \subsection{Aktuális állás megjelenítése}
 \label{actualstate}
 
-Az aktuális állást egyrészt a főképernyőn lehet látni, másrészt az alkalmazás fejlécében összegezve van hogy a szimuláció mennyi időnél tart, illetve hogy melyik rendőrcsapat összesen hány gengsztert kapott el eddig.
+Az aktuális állást egyrészt a főképernyőn lehet látni, másrészt az alkalmazás fejlécében összegezve van hogy a szimuláció mennyi időnél tart, illetve hogy melyik rendőrcsapat összesen hány gengsztert kapott el eddig (lásd: \ref{police}. ábra).
 
-TODO
+\vspace{2mm}
+Ezt az információt a traffic szervertől kapja az alkalmazás egy socketen keresztül. Ebben az információhalmazban benne van az összes autó információja -- beleértve a semleges autókat -- is.
 
 \subsection{Rendőrök és gengszterek hozzáadása}
 \label{addcops}
@@ -586,21 +619,61 @@ Miután már van saját rendőrünk a szimulációban (lásd: \ref{addcops}. fej
 \vspace{2mm}
 Alaphelyzetben nincs egy rendőr se kiválasztva. Ahhoz hogy egy rendőr-ágenst irányítani tudjunk egy rendőr közelébe kell kattintanunk a bal egérgombbal, és légvonalban 2500 méteren belül kell lennie a kattintás térképre vetített pontjának a rendőr helyzetétől. Amennyiben már volt kijelölve egy rendőr, de le szeretnénk venni a jelölést, úgy egyszerűen csak egy olyan pontra kell kattintanunk, amely nem esik bele egy rendőr 2,5 kilométeres körébe sem. Ennek a megvalósítása a \ref{selectcop}. forráskódrészleten látható.
 
-lstinputlisting
+\lstinputlisting[language=Java, caption=A legközelebbi rendőr kiválasztása amennyiben az 2500 méteren belül tartózkodik., label=selectcop]{src/selectcop.java}
 
 \newpage
 \chapter{Jövőbeli munka}
 \label{futureworks}
 
-<TODO szépen leírni>
+\section{Mesterséges intelligencia alkalmazása}
 
-Mesterséges intelligencia alkalmazása a rendőrök irányítására Java oldalon. 
+Az OOCWC rendőr változatának egyik fő célja volt hogy mesterséges intelligenciát használva irányítsuk a rendőr-ágenseket. Most, hogy már lehetőség van a rendőröket más programozási nyelvvel is irányítani, ugyanúgy fenn áll a lehetősége -- azon a programozási nyelven -- a mesterséges intelligencia implementálásának.
 
-A program többszálasítása, ahol az egyik szál a megjelenítésért felel, a másik szálon pedig a parancsokat tudnánk küldeni a servernek. Egyelőre nem lehetséges mert 2 egymás mellett futó traffic serverre lenne hozzá szükség, mert jelenleg a 2 szál ugyanarra a socketre bindolna mert ugyanaz a hostname és a port is egy traffic server esetén. 
+\section{Többszálasítás}
 
-Spring alapú webszerverré is tovább lehetne fejleszteni, amivel egy webalkalmazássá formálnánk a programot. Ekkor különválik egy backendre (Spring a már meglévő business logic-kal a megjelenítés nélkül) és egy frontendre (AngularJS + Bootstrap | megjelenítés + irányítás). Ez azért lenne érdekes mert egyszerre akár az összes versenyző tudná valós időben irányítani a rendőreit. 
+Itt a többszálasítás alatt főként az adatok érkezésének, és annak feldolgozásának, illetve az adatok küldésének a szálankénti szétválasztására gondolok. 
 
-</TODO szépen leírni>
+\vspace{2mm}
+Jelenleg ez azért nem lehetséges, mert mivel csak egy traffic server fut egy ip-címen és porton, így csak egy socketet tudunk hozzá kötni. Az az egy socket jelenleg a \url{<disp>} parancs számára van fenntartva, hogy az aktuális állás megjelenítése folyamatos legyen. 
+
+\vspace{2mm}
+Ahhoz, hogy egy sockettel működni tudjon az alkalmazás több szálon, arra lenne szükség hogy 200 ms-ba férjenek bele a következő műveletek:
+
+\begin{itemize}
+\item A socket lefoglalása, hogy csak a megjelenítő szál használhassa (lock),
+\item A \url{disp} parancs elküldése,
+\item A kapott adatok feldolgozása,
+\item Az állás frissítése,
+\item A socket feloldása, mivel ez a szál jelenleg már nem használja a socketet,
+\item Amennyiben az alkalmazás funkciói közül valamelyiket használni szeretnénk:
+	\begin{itemize}
+	\item A socket lefoglalása a küldő szál számára,
+	\item A parancs létrehozása, és elküldése,
+	\item A socket feloldása.
+	\end{itemize}
+\end{itemize}
+
+\vspace{2mm}
+Amennyiben olyan eset alakul ki, amikor az egyik szál erőforrásra vár -- pontosabban a socket feloldására -- akkor könnyen lefagyhat a várakozási idő hosszára a programunk, illetve valószínűleg nem lesz folyamatos a megjelenítés, ami úgy vélem, egy ilyen alkalmazásnál kritikus szempont.
+
+\section{Webalkalmazás létrehozása}
+
+Az egyik legígéretesebb fejlesztésnek a webalkalmazássá történő módosítást látom.
+
+\vspace{2mm}
+Mivel egy ilyen webalkalmazásnak a back-end részének a business logikája megegyezik a jelenleg is használttal az alkalmazásban, így a fejlesztések fő része a webalkalmazássá való átírásban lenne.
+
+\vspace{2mm}
+Technológia szempontjából úgy gondolom hogy a back-end egy Spring \cite{spring} alapú webalkalmazásból állna, ami egy Jetty \cite{jetty} szerveren fut. Front-end részről mindenképp AngularJS \cite{angularjs} a választásom a Bootstrap \cite{bootstrap} segítségével.
+
+\vspace{2mm}
+Ezt azért tartom talán a legjobb továbbhaladási iránynak, mert ezáltal akár egyszerre az összes versenyző is tudná irányítani a rendőrjeit valós-időben, így a versenyek mégjobban a valós-idejű vetélekdésre fókuszálnának.
+
+\vspace{2mm}
+A kinézetét, illetve működését, úgy tudom elképzelni, hogy a versenyző megnyitja a szerverhez tartozó weboldalt, ahol be kell elsőnek jelentkeznie (megadja a csapatnevét), és bejön a térkép. Az ilyen webalkalmazás tipikusan egy SPA (Single Page Application), és az AngularJS kifejezetten az ilyen alkalmazások számára lett fejlesztve.
+
+\vspace{2mm}
+A térképen való navigáláson, és a saját rendőr kijelölésén nem változtatnék a mostani implementációhoz képest.
 
 \newpage
 \chapter{Összefoglalás}

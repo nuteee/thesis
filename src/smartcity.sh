@@ -1,1 +1,1 @@
-src/smartcity --osm=../debrecen.osm --city=Debrecen --shm=DebrecenSharedMemory
+src/smartcity --osm=../debrecen.osm --city=Debrecen --shm=DebrecenSharedMemory --node2gps=debrecenNodes.txt
