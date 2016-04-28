@@ -149,7 +149,7 @@ A közelmúltban nagy mértékű fejlődést vehettünk észre az autógyártás
 Az elkövetkező éveket azonban várhatóan az autonóm autók nagy mértékű megjelenése és elterjedése váltja fel. Ezek az autók mellett nemrég láthattuk a Tesla új modelljének a bemutatóját is, mely ugyancsak erősíti a feltevést, miszerint az elektromos hajtású, illetve az úgynevezett ``hibrid'' hajtású kocsik előtt áll a jövő. Elektromos hajtású kocsikat manapság is láthatunk már az utcákon. Ezeket könnyen felismerhetjük a zöld hátterű rendszámtáblájukról.
 
 \vspace{2mm}
-A Drive.ai a 13. cég akik jogosítványt kaptak az autonóm kocsik teszteléséhez Kalifornia publikus utcáin. A cég az autonóm autók továbbfejlesztésén dolgozik úgy, hogy a mély-tanulást (deep-learning) alkalmazza robotautókra. Ez azért kiemelkedően fontos, mert az autonóm kocsik fejlesztésében a kemény rész a szélsőséges esetek (edge cases) megoldása. Ilyen esetek lehetnek például a havazás, vagy az eső is. Jelenleg az autonóm kocsik fejlesztői különböző szabályokat programoztak be ezekre az esetekre, azonban a mély-tanulás megközelítésével a robotautó megtanulja hogy reagáljon ezekre az esetekre azáltal, hogy a kapott adat legapróbb részét is megérti \cite{driveai}.
+A Drive.ai a 13. cég akik jogosítványt kaptak az autonóm kocsik teszteléséhez Kalifornia publikus utcáin. A cég az autonóm autók továbbfejlesztésén dolgozik úgy, hogy a mély-tanulást (deep-learning) alkalmazza robotautókra. Ez azért kiemelkedően fontos, mert az autonóm kocsik fejlesztésében a kemény rész a szélsőséges esetek (edge cases) megoldása. Ilyen esetek lehetnek például a havazás, vagy az eső is. Jelenleg az autonóm kocsik fejlesztői különböző szabályokat programoztak be ezekre az esetekre, azonban a mély-tanulás megközelítésével a robotautó megtanulja hogy reagáljon ezekre az esetekre azáltal, hogy a kapott adat teljes egészét próbálja megérteni, és a már megtanult adat alapján reagál rá. \cite{driveai}.
 
 \vspace{2mm}
 A fent említettek alapján tisztán látszik, hogy az autóipar szemléletváltás előtt áll. A nem újrahasznosítható energiaforrásokon alapuló motorokat és a vezetői élményt kezdi lassan felváltani a hosszabb távon fenntartható, újrahasznosítható energiaforrást használó motorokkal hajtott autonóm gépkocsik, mellyel az utazáshoz a pihentető időtöltés vízióját próbálják hozzárendelni.
@@ -440,25 +440,23 @@ Az OOCWC (\ref{oocwc}. fejezet) számára az egyik legfontosabb ilyen könyvtár
 
 \begin{figure}[ht]
 \centerline{
-\includegraphics[width=3.6in]{img/mavenlogo}}
+\includegraphics[width=4.5in]{img/mavenlogo}}
 \caption{A Maven logója. Forrás: \cite{mavenlogo}.}
-\label{boostlogo}
+\label{mavenlogo}
 \end{figure}
 
 A Maven eredetileg egy kísérletként indult azzal a céllal, hogy a Jakarta Turbine projekt \cite{turbine} build folyamatait egyszerűsítsék. Több projekt volt a saját Ant \cite{ant} build fájljaival, melyek alig voltak különbözőek. A Maven célja az (volt), hogy létrehozzon egy szabványosított módszert arra, hogy:
 
 \begin{itemize}
 \item hogyan legyenek a projektek buildelve,
-\item tiszta és egyértelmű leírás legyen a projekt tartalmát tekintve,
-\item könnyen lehessen a projekt információit megosztani,
-\item és hogy több projekten keresztül tudjunk JAR fájlokat megosztani.
+\item tiszta és egyértelmű leírás legyen a projekt függőségeit tekintve,
+\item könnyen lehessen a projekt információit megosztani.
 \end{itemize}
 
-Az eredmény végül egy olyan eszköz lett, mellyel bármely Java alapú projektet tudjuk buildelni és kezelni.
+Az eredmény végül egy olyan eszköz lett, mellyel bármely Java alapú projektet könnyen tudjuk építeni és menedzselni. A Maven működéséhez egy \url{pom.xml} fájlt kell megadni, amely tartalmazza a projekt felépítéséhez szükséges összes információt. Ilyen információ például a menedzselt projekt függősége is, melyet miután meghatároztunk a POM (Project Object Model) fájlban, a Maven letölti a hozzá tartozó JAR fájlt, és felkerül a projekt classpath-jára, ezáltal máris használni tudjuk a projekten belül az a dependenciát.
 
-A Maven első számú célja az, hogy lehetővé tegye a fejlesztő számára, hogy a lehető legrövidebb idő alatt megértse a fejlesztés szükségleteinek a teljes állapotát \cite{aboutmaven}. 
-
-TODO
+\vspace{2mm}
+Ezeket a függőségeket a Maven az általa üzemeltetett Maven Repository Center-ben \cite{mavenrepository} keresi, és tölti le. Van lehetőségünk további tárolókat hozzáadni a POM fájlunkhoz, illetve saját magunk is készíthetünk tárolókat.
 
 \newpage
 \section{Git}
@@ -468,7 +466,7 @@ TODO
 \centerline{
 \includegraphics[width=3.6in]{img/gitlogo}}
 \caption{A Git logója. Forrás: \cite{gitlogo}.}
-\label{boostlogo}
+\label{gitlogo}
 \end{figure}
 
 A Git egy verziókezelő rendszer, melyet széles körben használnak a szoftverfejlesztésnél és egyéb verziókövetési feladatoknál. Ez egy elosztott forráskódkezelő rendszer, melynél nagy hangsúlyt kap a sebesség \cite{gitspeed}, az adatok integritása \cite{gitdata}, és az elosztott, nem lineáris munkafolyamatok támogatása. A Gitet eredetileg 2005-ben tervezték és fejlesztették a Linux kernel fejlesztői a kernel fejlesztésének támogatására.
@@ -477,13 +475,48 @@ A Git egy verziókezelő rendszer, melyet széles körben használnak a szoftver
 Mint a legtöbb elosztott verziókövető rendszereknél, és ellentétben a legtöbb kliens-szerver rendszerekkel, minden egyes Git munkakönyvtár egy teljes értékű Git tároló, teljes előzménnyel, és teljes verzió-követési képességgel, ami független a hálózati hozzáféréstől, vagy a központi szervertől.
 
 \vspace{2mm}
-A Gitet elsőnek egy alacsony szintű verziókezelő rendszernek tervezték, amire aztán az emberek a saját ízlésüknek megfelelő front-endet fejleszthettek. Ilyen például a Cogito \cite{cogito}. A Git magja azóta már egy komplett verziókezelő rendszerré vált, ami már önmagában is használható. Bár a fejlesztést erősen befolyásolta a BitKeeper \cite{bitkeeper}, Torvalds szándékosan kerülte a hagyományos megközelítéseket, amelynek köszönhetően a Git egy egyedi struktúrával jött létre \cite{gitunique}.
+A Gitet elsőnek egy alacsony szintű verziókezelő rendszernek tervezték, amire aztán az emberek a saját ízlésüknek megfelelő front-endet fejleszthettek. Ilyen például a Cogito \cite{cogito}. A Git mára már egy teljes verziókezelő rendszerré nőtte ki magát, és így más programok nélkül is tudjuk használni. Bár a fejlesztést erősen befolyásolta a BitKeeper \cite{bitkeeper}, Torvalds szándékosan kerülte a hagyományos megközelítéseket, amelynek köszönhetően a Git egy egyedi struktúrával jött létre \cite{gitunique}.
 
 \newpage
 \section{OpentStreetMap (OSM)}
 \label{osm}
 
-TODO
+Az OpenStreetMap egy ingyenes, a közösség által szerkesztett térkép. Célja hogy az egész világot minél részletesebben leíró ingyenes térképet szolgáltassanak a szoftverfejlesztők, illetve felhasználók számára. A térképet bárki szerkesztheti aki az oldalukra (\url{www.openstreetmap.org}) regisztrál. 
+
+\vspace{2mm}
+Az OSM létrejöttét Steve Coast-nak köszönhetjük, aki 2004-ben kezdte el a projektet azzal a céllal, hogy Angliát feltérképezze. 2006 áprilisában lett létrehozva az OpenStreetMap Egyesület azzal a céllal, hogy segítse a térinformatikai adatok növekedését, fejlesztését, és forgalmazását a felhasználók körében.
+
+\vspace{2mm}
+Az önkéntesek egy Java (\ref{java}. fejezet) alapú appleten keresztül tudtak módosításokat felvinni a térképre, vagy valamely offline szerkesztő szoftver használatával. A mai napig az egyik legjobban használt ilyen program a JOSM \cite{josm}.
+
+\vspace{2mm}
+2006 decemberében a Yahoo megengedte, hogy az OpenStreetMap felhasználja a légi felvételeit, ezáltal olyan helyeket is sikerült az OSM-nek ledokumentálnia, melyekhez eddig nem tudtak hozzáférni. Fél évvel később kiadták a Potlatch \cite{potlatch} térképszerkesztőt, ezáltal segítve a robbanásszerűen növekedő felhasználóbázis integrációját. Egy példát a Potlatch térképszerkesztő 2006-os verziójára a \ref{oldworcester}. ábrán láthatunk.
+
+\newpage
+Az állandó térképszerkesztő szoftverek fejlesztéseinek köszönhetően 2009-től kezdve az OSM egyre jobban elterjedt, a felhasználó- és szerkesztőbázisa pedig exponenciálisan növekedett (lásd: \ref{osmusers}. ábra).
+
+\begin{figure}[ht]
+\centerline{
+\includegraphics[width=5.5in]{img/osmusers}}
+\caption{Az OpenStreetMap regisztrált felhasználóinak száma. Forrás: \cite{osmhistory}.}
+\label{osmusers}
+\end{figure}
+
+A mai napra már annyira megbízható térképpé nőtte ki magát az OpenStreetMap -- hála az egyre több és több önkéntes szerkesztőnek -- hogy több nagyobb (mobil)alkalmazás is az OSM-re alapul. Ilyen például, egy a sok közül, a Maps.me \cite{mapsme} mobilalkalmazás.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=5in]{img/oldworcester}
+\caption{A Potlatch-ben szerkesztett Worcester térképe 2006-ban. Forrás: \cite{osmhistory}.}
+\label{oldworcester}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=5in]{img/newworcester}
+\caption{Worcester képe az OpenStreetMap térképen napjainkban. Forrás: \cite{osm}.}
+\label{newworcester}
+\end{figure}
 
 \newpage
 \chapter{Az alkalmazás (Cop Controller)}
@@ -553,7 +586,7 @@ Miután már van saját rendőrünk a szimulációban (lásd: \ref{addcops}. fej
 \vspace{2mm}
 Alaphelyzetben nincs egy rendőr se kiválasztva. Ahhoz hogy egy rendőr-ágenst irányítani tudjunk egy rendőr közelébe kell kattintanunk a bal egérgombbal, és légvonalban 2500 méteren belül kell lennie a kattintás térképre vetített pontjának a rendőr helyzetétől. Amennyiben már volt kijelölve egy rendőr, de le szeretnénk venni a jelölést, úgy egyszerűen csak egy olyan pontra kell kattintanunk, amely nem esik bele egy rendőr 2,5 kilométeres körébe sem. Ennek a megvalósítása a \ref{selectcop}. forráskódrészleten látható.
 
-\lstinputlisting[language=Java, caption=A legközelebbi rendőr kiválasztása amennyiben az 2500 méteren belül tartózkodik., label=selectcop]{src/selectcop.java}
+lstinputlisting
 
 \newpage
 \chapter{Jövőbeli munka}
