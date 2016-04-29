@@ -231,10 +231,21 @@ Itt a kapcsolók a következő beállításokat jelentik:
 
 \begin{itemize}
 \item osm -- Az OpenStreetMap térkép elérési útvonala.
-\item city -- A szimulált város neve.
-\item shm -- Az osztott memória elérési neve.
+	\begin{itemize}
+	\item Alapbeállítás: \url{../debrecen.osm}
+	\end{itemize}
 \item node2gps -- Az OSM térképén belüli csomópontokhoz tartozó GPS koordinátákat ebbe a fájlba írja ki.
-\label{node2gps}
+	\begin{itemize}
+	\item Alapbeállítás: \url{../lmap.txt}
+	\end{itemize}
+\item city -- A szimulált város neve.
+	\begin{itemize}
+	\item Alapbeállítás: \url{Debrecen}
+	\end{itemize}
+\item shm -- Az osztott memória elérési neve.
+	\begin{itemize}
+	\item Alapbeállítás: \url{JustineSharedMemory}
+	\end{itemize}
 \end{itemize}
 
 \vspace{2mm}
@@ -242,11 +253,37 @@ Amennyiben a SmartCity kimenetén megjelenik hogy ``Ready'', úgy folytathatjuk 
 
 \lstinputlisting[language=bash, caption=A szimulációs szerver elindítása, label=starttraffic]{src/traffic.sh}
 
-A beállítási kapcsolók jelentése a következő:
+A beállítási kapcsolók a következők lehetnek:
 
 \begin{itemize}
-\item port -- A szervernek a portja, amelyen a szerver üzemel.
 \item shm -- Az osztott memória neve.
+	\begin{itemize}
+	\item Alapbeállítás: \url{JustineSharedMemory}
+	\end{itemize}
+\item port -- A szervernek a portja, amelyen a szerver üzemel.
+	\begin{itemize}
+	\item Alapbeállítás: \url{10007}
+	\end{itemize}
+\item nrcars -- A rutin autók száma.
+	\begin{itemize}
+	\item Alapbeállítás: \url{100}
+	\end{itemize}
+\item minutes -- A szimuláció hosszának a száma percben megadva.
+	\begin{itemize}
+	\item Alapbeállítás: \url{10}
+	\end{itemize}
+\item catchdist -- A szükséges távolság méterben, amelyen belül egy rendőr-ágens elkap egy gengsztert.
+	\begin{itemize}
+	\item Alapbeállítás: \url{15.5}
+	\end{itemize}
+\item traffict -- A rutin autók szimulációs típusa. Lehet:
+	\begin{itemize}
+	\item \url{NORMAL} -- alapbeállítás
+	\item \url{ANTS}
+	\item \url{ANTS_RND}
+	\item \url{ANTS_RERND}
+	\item \url{ANTS_MRERND}
+	\end{itemize}
 \end{itemize}
 
 \section{A rendszer működése}
@@ -261,7 +298,7 @@ A beállítási kapcsolók jelentése a következő:
 \label{dataflowpicture}
 \end{figure}
 
-Ahogy a \ref{dataflowpicture}. ábrán látható, ahogy folyik a szimuláció a szerveren, úgy minden egyes lépésenként a szerver elküldi az aktuális állást az alkalmazásnak. Ezt a Cop Controller feldolgozza, ezáltal valós idejű képet adva a jelenleg állásról.
+Ahogy a \ref{dataflowpicture}. ábrán látható, ahogy folyik a szimuláció a szerveren, úgy minden egyes lépésenként a szerver elküldi az aktuális állást az alkalmazásnak. Ezt a Cop Controller feldolgozza, ezáltal valós idejű képet adva a jelenlegi állásról.
 
 \vspace{2mm}
 Az alkalmazás oldaláról több funkciót is lehet használni. Ezekről többet a \ref{functions}. fejezetben olvashatsz. Ezek a funkciók azonnal feldolgozásra kerülnek a szerveren, így a változás azonnal látható lesz.
@@ -298,7 +335,7 @@ Az új parancs a következőképpen néz ki:
 <inner_route [rendor-agens ID] [A cel csomopont]>
 \end{lstlisting}
 
-A parancs feldolgozása után a traffic server gondoskodik a rendőr-ágens irányításáról. Lásd: \ref{newroutingsrc}. forráskódrészlet.
+A parancs feldolgozása után a traffic szerver gondoskodik a rendőr-ágens irányításáról. Lásd: \ref{newroutingsrc}. forráskódrészlet.
 
 \lstinputlisting[language=C++, caption=Az új routing forráskód részlete, label=newroutingsrc]{src/newroutingcmd.cpp}
 
@@ -384,13 +421,13 @@ Természetesen van módja a platformfüggetlenségét megtörni egy Java program
 \subsection{Swing}
 \label{swing}
 
-A Swing egy eszközkészlet a grafikus felhasználói felületek létrehozására.
+A Swing API (Application Programming Interface) rengeteg kiterjeszthető komponenst tartalmaz, melyeket felhasználva a programozó könnyen tud Java alapú, grafikus felhasználói felülettel rendelkező alkalmazást létrehozni. 
 
 \vspace{2mm}
-A Swinget azzal a céllal fejlesztették, hogy egy szofisztikáltabb GUI komponenshalmazt szolgáltasson mint a korábbi Abstract Window Toolkit (AWT) \cite{awt}. A Swingnek a komponensei erőteljesebb és flexibilisebb az AWT-hez hasonlítva. A már ismert komponensekhez, mint például a Button-ök, check boxok és labelek, a Swing olyan további fejlett eszközökkel szolgál, mint a tabbed panel, scroll pane, fák, táblázatok és listák.
+A Swing fejlesztésének a céljai közt volt a korábbi AWT (Abstract Window Toolkit) leváltása, mivel szinte minden, amit a Swing implementál, megtalálható az AWT implementációjában is \cite{awt}, azzal a különbséggel hogy a Swing komponensei már platformfüggetlenek, könnyebben testre szabhatóak, és összességében könnyebb velük dolgozni. A Swing a már az AWT-ből ismert komponensekhez olyan további új komponenseket ad a programozó kezébe, mint például a füllel ellátott panel, különböző fák, táblázatok, vagy listák.
 
 \vspace{2mm}
-Ellentétben az Abstract Window Toolkit komponenseivel, a Swing komponensei nem platform-specifikus kódként lettek implementálva. Helyette teljesen Java nyelven írták meg, ezáltal a komponensek platform-függetlenek lettek. A ``lightweight'' kifejezéssel írjuk le az ilyen elemeket \cite{swingarticle}.
+Ellentétben az Abstract Window Toolkit komponenseivel, a Swing komponensei nem platform-specifikus kódként lettek implementálva. Helyette teljesen Java nyelven írták meg, ezáltal a komponensek platform-függetlenek lettek, így illik ezekre az elemekre a ``lightweight'' kifejezés \cite{swingarticle}.
 
 \vspace{2mm}
 A Swinget a közeljövőben a JavaFX \cite{javafx} fogja felváltani.
@@ -560,7 +597,7 @@ Miután felugrott az ehhez kapcsolódó panel, válasszuk ki az ``Existing Maven
 \end{figure}
 
 \vspace{2mm}
-Miután ``Next''-re kattintottunk meg kell adnunk a relatív elérési útját a mappának melyben \url{pom.xml} fájl van. Mután azt megadtuk az Eclipse be tudja importálni a projektet (lásd \ref{importmaven2}. ábra).
+Miután ``Next''-re kattintottunk meg kell adnunk a relatív elérési útját a mappának melyben \url{pom.xml} fájl van. Miután azt megadtuk az Eclipse be tudja importálni a projektet (lásd \ref{importmaven2}. ábra).
 
 \begin{figure}[ht]
 \centerline{
@@ -604,7 +641,7 @@ Az alkalmazásban lehetőség van:
 
 \lstinputlisting[language=bash, caption=100 gengszter hozzáadása; ahol a ``Gergo'' azt a csapatnak a nevét jelenti amely hozzáadta a gengsztereket., label=init100gangster]{src/init_100_gangsters.sh}
 
-Mindhárom parancs működösénék az alapelve megegyezik. A telnet protokollt felhasználva elküldjük a kívánt parancsnak megfelelő üzenetet, amit a szimulációs szerver feldolgoz. Ezeknek a parancsoknak az eredményeit azonnal láthatjuk (Erről többet a \ref{dataflow}. fejezetben lehet olvasni).
+Mindhárom parancs működösének az alapelve megegyezik. A telnet protokollt felhasználva elküldjük a kívánt parancsnak megfelelő üzenetet, amit a szimulációs szerver feldolgoz. Ezeknek a parancsoknak az eredményeit azonnal láthatjuk (Erről többet a \ref{dataflow}. fejezetben lehet olvasni).
 
 \vspace{2mm}
 Ezeknek a megoldásoknak az előnye hogy a parancsok egy teljesen különböző processzként futnak mint az alkalmazás, ezáltal nem zavarják a folyamatos adatáramlást, ami a megjelenítéshez szükséges. Példa az alkalmazásból 100 gengszter inicializálására a \ref{call100gangster}. forráskódrészletben látható.
@@ -667,7 +704,7 @@ Mivel egy ilyen webalkalmazásnak a back-end részének a business logikája meg
 Technológia szempontjából úgy gondolom hogy a back-end egy Spring \cite{spring} alapú webalkalmazásból állna, ami egy Jetty \cite{jetty} szerveren fut. Front-end részről mindenképp AngularJS \cite{angularjs} a választásom a Bootstrap \cite{bootstrap} segítségével.
 
 \vspace{2mm}
-Ezt azért tartom talán a legjobb továbbhaladási iránynak, mert ezáltal akár egyszerre az összes versenyző is tudná irányítani a rendőrjeit valós-időben, így a versenyek mégjobban a valós-idejű vetélekdésre fókuszálnának.
+Ezt azért tartom talán a legjobb továbbhaladási iránynak, mert ezáltal akár egyszerre az összes versenyző is tudná irányítani a rendőreit valós-időben, így a versenyek még jobban a valós-idejű vetélkedésre fókuszálnának.
 
 \vspace{2mm}
 A kinézetét, illetve működését, úgy tudom elképzelni, hogy a versenyző megnyitja a szerverhez tartozó weboldalt, ahol be kell elsőnek jelentkeznie (megadja a csapatnevét), és bejön a térkép. Az ilyen webalkalmazás tipikusan egy SPA (Single Page Application), és az AngularJS kifejezetten az ilyen alkalmazások számára lett fejlesztve.
@@ -679,6 +716,20 @@ A térképen való navigáláson, és a saját rendőr kijelölésén nem válto
 \chapter{Összefoglalás}
 \label{summary}
 
+Az alkalmazás célközönsége a Robocar World Championship résztvevői, akik a jelentkezéshez (vagy akár az éles meccsekhez is) tudják használni a programot. Mint ahogy azt fentebb említettem, ennek természetesen előnyei, és hátrányai is vannak. Számomra hatalmas előny, hogy a 10 perces futási idő alatt folyamatosan gondolkodnom és strategizálnom kellett, hogy az aktuális rendőrömet merre irányítsam, hogy a lehető legtöbb gengsztert elkapjam, mivel minden egyes gengszter elkapása örömmel töltött el, tudván hogy a stratégiám bevált.
+
+\vspace{2mm}
+Az egyik hátrány ugyanúgy abból következik hogy valós időben bízzuk a felhasználóra a rendőr irányítását. Ezzel egyértelműen minimális hátrányba kerül a többi mesterséges intelligenciával ellátott rendőr-ágenssel szemben.
+
+\vspace{2mm}
+A másik hátrány szintén a valós-idejűségből, és az ember reakcióideje és a mesterséges intelligencia reakcióidejének az összehasonlításából adódik. Amíg a mesterséges intelligenciával ellátott rendőr-ágens minden egyes lépésben újratervezi az aktuális adatok alapján hogy merre tudná elkapni leghamarabb a következő gengsztert, addig az embernek kell legalább 5-10 lépés, mire az adatokat a térképről megérti, a megfelelő rendőr-ágensét kiválasztja, és azt akarata szerint irányítja.
+
+\vspace{2mm}
+Ahogy láthatjuk ezek a hátrányok az ember és a mesterséges intelligencia közötti különbségek által jöttek létre, így szerintem a további versenyeket érdemes lenne két részre bontani: 
+\begin{enumerate} 
+\item real-time versenyek, ahol a rendőröket mindenki maga irányítja, 
+\item normális versenyek, ahol a cél továbbra is a jobb mesterséges intelligencia fejlesztése, mint ahogy azt eddig is láthattuk az OOCWC kapcsán.
+\end{enumerate}
 TODO
 
 \newpage
@@ -710,5 +761,16 @@ along with COPCONTROLLER. If not, see <http://www.gnu.org/licenses/>.
 \chapter*{Köszönetnyilvánítás}
 \addcontentsline{toc}{chapter}{Köszönetnyilvánítás}
 
+Szeretnék köszönetet mondani témavezetőm, és egykori tanárom, dr. Bátfai Norbertnek, akinek őszinte tanácsai nélkül ezt a munkát ma nem olvashatná a kedves olvasó. Szeretném továbbá megköszönni neki, hogy mint akkori prog2-es tanuló, részese lehettem a Robocar World Championship létrejöttének, és fejlődésének.
+
+Szeretnék megköszönni az újabb, reguláris oktatásban résztvevő, prog1-es és prog2-es hallgatóknak is, hogy tovább formálják, éltetik, és folyamatosan gyarapítják az OOCWC közösségét.
+
+Szeretnék továbbá köszönetet mondani régi, jó barátomnak, és kollégámnak, Iváncza Csabának, a folyamatos támogatásáért, és a technikai beszélgetéseink által az új perspektívák megnyitásáért számomra.
+
+Hálásan köszönöm kedvesem kitartó türelmét és a mindennapi feladatokban nyújtott segítségét.
+
+Szeretném megköszönni szüleimnek azt a sok gondoskodást és törődést, ami végigkísért tanulmányaim során.
+
+Végül pedig szeretném Önnek, kedves olvasó, megköszönni hogy elolvasta ezt a munkát.
 
 \end{document}
