@@ -346,13 +346,6 @@ A parancs feldolgozása után a traffic szerver gondoskodik a rendőr-ágens ir�
 \section{Java}
 \label{java}
 
-\begin{figure}[ht]
-\centerline{
-\includegraphics[width=1.1in]{img/javalogo}}
-\caption{A Java hivatalos logója.}
-\label{javalogo}
-\end{figure}
-
 A Java programozási nyelv az alapja a hálózati alkalmazások nagy részének, és világkörű szabvány a beágyazott mobil alkalmazások, játékok, webes tartalmak, és a vállalati szoftverek számára. Több mint 9 millió fejlesztővel világszerte a háta mögött, a Java az egyik leghasználtabb és legelterjedtebb programozási nyelv. 
 
 \vspace{2mm}
@@ -458,21 +451,84 @@ A korai '80-as években, a Bell Laboratories cégnél, egy új programozási nye
 \vspace{2mm}
 Idővel ahogy egyre jobban fejlődött a nyelv, elkerülhetetlenné vált a szabványosítás. A C++ 1991-ben indult el a szabványosítás útján, majd 1998-ban az ISO szabványosításba bekerült ``ISO/IEC 14882:1998'' néven \cite{c++98}. A következő szabványt 2003-ban fogadták el ``ISO/IEC 14882:2003'' kódnévvel \cite{c++03}. 8 éve elteltével a következő szabványt is elfogadták, amit ``ISO/IEC 14882:2011'' kódjelzéssel láttak el \cite{c++11}. A legújabb C++ szabvány a röviden C++14 névre hallgató, ``ISO/IEC 14882:2014'' kódú szabvány \cite{c++14}.
 
-\subsection{Boost library}
+\section{Boost library}
 \label{boost}
-
-\begin{figure}[ht]
-\centerline{
-\includegraphics[width=3.6in]{img/boost}}
-\caption{A Boost logója. Forrás: \cite{boostlogo}.}
-\label{boostlogo}
-\end{figure}
 
 \vspace{2mm}
 A Boost a C++ programozási nyelvhez ad támogatást olyan könyvtárakkal, melyek különböző területek különböző problémáit segítenek megoldani. Többek között ilyen területek a lineáris algebra, a pszeudorandom számok generálása, a több-szálasítás, a képfeldolgozás, a reguláris kifejezések, illetve a unittesztelés. 
 
 \vspace{2mm}
-Az OOCWC (\ref{oocwc}. fejezet) számára az egyik legfontosabb ilyen könyvtár a BGL (Boost Graph Library) \cite{bgl}, melynek segítségével épül fel az OpenStreetMap \cite{osm} (\ref{osm}. fejezet) térkép alapján az OOCWC irányított gráfja.
+Az OOCWC (\ref{oocwc}. fejezet) számára az egyik legfontosabb ilyen könyvtár a BGL (Boost Graph Library) \cite{bgl} (lásd: \ref{bgl}. fejezet), melynek segítségével épül fel az OpenStreetMap \cite{osm} (\ref{osm}. fejezet) térkép alapján az OOCWC irányított gráfja.
+
+\subsection{Boost Graph Library (BGL)}
+\label{bgl}
+
+A gráfok olyan matematikai absztrakciók, amelyek számos számítástechnikai probléma megoldására hasznosak. Következtetésképp ezeknek az absztrakcióknak ugyanúgy helyet kell adni a számítógépes programok körében. A gráffal kapcsolatos algoritmusoknak és adatstruktúráknak a újrafelhasználásához talán az egyik legfontosabb eszköz a szabványosított generikus interfész a gráfok bejárásához. 
+
+\vspace{2mm}
+A Boost Graph Library egy részét az ilyen generikus interfészek alkotják, amely segíti a programozót a gráf struktúrájával való műveletekkel, miközben elrejti az implementáció részleteit előle. A BGL olyan általános célú gráf osztályokkal szolgál a felhasználói felé, melyek megfelelnek a fent említett interfésznek.
+
+\vspace{2mm}
+A BGL több kereső algoritmussal is szolgál. A teljesség igénye nélkül ezek a következők:
+\begin{itemize}
+\item \url{Breadth First Search},
+\item \url{Depth First Search},
+\item \url{Dijkstra's Shortest Paths},
+\item \url{Bellman-Ford Shortest Paths}
+\end{itemize}
+
+Ezek közül az OOCWC a Dijkstra's Shortest Paths, és a Bellman-Ford Shortest Paths algrotimusokat implementálja, azonban
+
+\subsubsection{A Robocar World Championship és a Boost Graph Library}
+\label{oocwcbgl}
+
+Az OOCWC irányított gráf struktúrája a következőképp épül fel:
+
+\lstinputlisting[language=C++, caption=Az OOCWC által használt gráf struktúrája., label=oocwcgraphstruct]{src/noderefgraph.cpp}
+
+A \ref{oocwcgraphstruct}. forráskódrészletben látható generikus paraméterek jelentése a következő:
+\begin{itemize}
+\item \url{listS} -- Az élek típusa. Ez azt jelenti hogy egy \url{listS} típusú konténerben tárolja a csúcsokhoz tartozó éleket, melyek iterálhatóak.
+\item \url{vecS} -- A csúcsok típusa. Ez azt jelenti hogy egy \url{vecS} típusú konténerben tárolja a gráf csúcsainak a listáját.
+\item \url{directedS} -- A gráf irányítottsága. A \url{directedS} típus használata az irányított gráfot jelenti.
+\item \url{property<vertex_name_t, osmium::unsigned_object_id_type>}:
+	  \begin{itemize}
+	  \item Itt a csúcsok neveinek a típusát határozzuk meg. Esetünkben ez \url{osmium::unsigned_object_id_type}, ami fordítási időben a \url{long unsigned int}-re értékelődik ki.
+	  \end{itemize}
+\item \url{property<edge_weight_t, int>}:
+	  \begin{itemize}
+	  \item Itt az élek súlyainak a típusát tudjuk beállítani. Esetünkben \url{int}, tehát egy egész számot alkalmazunk az élek súlyainak meghatározására.
+	  \end{itemize}
+\end{itemize}
+
+Miután az OOCWC inicializálta a gráfot az OSM-ből kinyert adatokkal, alkalmazhatjuk rá a fentebb felsorolt kereső algoritmusokat.
+
+\vspace{2mm}
+Az OOCWC-n a gráfon kereső algoritmusok közül a ``Dijkstra's Shortest Paths'' algoritmus lett használva. A főbb indokok amiért ez lett választva :
+\begin{itemize}
+\item A ``távolság térképet'' csak egyszer kell felépíteni, az alkalmazás elindításakor, ezáltal az algoritmus futási idejét, mint problémát, szinte el is lehet felejteni.
+\item A ``Dijkstra's Shortest Paths'' algoritmust akkor a legalkalmasabb használni, amikor: 
+	\begin{itemize}
+	\item A gráf súlyozott,
+	\item Az élek súlyai nem negatívak.
+	\end{itemize}
+\item A ``Dijkstra's Shortest Paths'' algoritmus számára a gráf irányítottsága nem számít.
+\end{itemize}
+
+Példa a ``Dijkstra's Shortest Paths'' algoritmusra az OOCWC-n belül:
+\lstinputlisting[language=C++, caption=Az OOCWC által használt útkereső algoritmus hívása., label=oocwcdijkstra]{src/dijkstra.cpp}
+
+A \ref{oocwcdijkstra}. forráskódrészletben látható paraméterek jelentése a következő:
+\begin{itemize}
+\item \url{*nodeReferenceGraph} -- A gráf objektum, amin alkalmazva lesz az algoritmus.
+\item \url{nodeReference2Vertex[from]} -- A kiinduló csúcs, ahonnan kezdve az algoritmus a legrövidebb utat számolja a többi csúcsig.
+\item \url{distance_map(distanceMap)} -- A \url{DistanceMap} típusú ``távolsági térkép''.
+\item \url{.predecessor_map(predecessorMap)} -- A \url{DistanceMap} típusú objektum által létrehozott \url{PredecessorMap} típusú objektum. Ezt felhasználva tudjuk megtalálni a legrövidebb utat két csúcs közt.
+\end{itemize}
+
+Végül a fentebb említettek alapján a legrövidebb utat a \ref{oocwcshortestpath}. forráskódrészletben látható módot találjuk meg.
+
+\lstinputlisting[language=C++, caption=Az OOCWC által implementált legrövidebb út keresése., label=oocwcshortestpath]{src/findpath.cpp}
 
 \newpage
 \section{Maven}
@@ -521,6 +577,13 @@ A Gitet elsőnek egy alacsony szintű verziókezelő rendszernek tervezték, ami
 \section{OpentStreetMap (OSM)}
 \label{osm}
 
+\vspace{2mm}
+2015. novemberében a Debreceni Egyetem Informatikai Karán Jeszenszky Péter adjunktus indított egy ``kampányt'' a részletesebb Debrecen térkép érdekében. A megvalósítás a hallgatókat bevonva önkéntes alapon történt a HTML/XML kurzus keretében, ahol az OSM XML kapcsán került bemutatásra a projekt, mint egy XML alkalmazás, mintegy 150 fő számára. A hallgatók motiválásképp a sikeres szerkesztésekért extra pontokat kaptak a félév végi érdemjegybe.
+
+\vspace{2mm}
+Bár a hallgatók közül a vártnál kevesebben vettek részt a Debreceni térkép kiegészítésében, így is sok olyan bejegyzéssel bővült a térkép, mint például az utak sávjainak a száma, ami fontos lehet a további OOCWC kutatások számára.
+
+\vspace{2mm}
 Az OpenStreetMap egy ingyenes, a közösség által szerkesztett térkép. Célja hogy az egész világot minél részletesebben leíró ingyenes térképet szolgáltassanak a szoftverfejlesztők, illetve felhasználók számára. A térképet bárki szerkesztheti aki az oldalukra (\url{www.openstreetmap.org}) regisztrál. 
 
 \vspace{2mm}
@@ -532,31 +595,35 @@ Az önkéntesek egy Java (\ref{java}. fejezet) alapú appleten keresztül tudtak
 \vspace{2mm}
 2006 decemberében a Yahoo megengedte, hogy az OpenStreetMap felhasználja a légi felvételeit, ezáltal olyan helyeket is sikerült az OSM-nek ledokumentálnia, melyekhez eddig nem tudtak hozzáférni. Fél évvel később kiadták a Potlatch \cite{potlatch} térképszerkesztőt, ezáltal segítve a robbanásszerűen növekedő felhasználóbázis integrációját. Egy példát a Potlatch térképszerkesztő 2006-os verziójára a \ref{oldworcester}. ábrán láthatunk.
 
-\newpage
-Az állandó térképszerkesztő szoftverek fejlesztéseinek köszönhetően 2009-től kezdve az OSM egyre jobban elterjedt, a felhasználó- és szerkesztőbázisa pedig exponenciálisan növekedett (lásd: \ref{osmusers}. ábra).
+\vspace{2mm}
+Az állandó térképszerkesztő szoftverek fejlesztéseinek köszönhetően 2009-től kezdve az OSM egyre jobban elterjedt, a felhasználó- és szerkesztőbázisa pedig exponenciálisan növekedett (lásd: \ref{osmusers}. ábra), ezáltal a térkép részletessége is gyorsan javult (\ref{newworcester}. ábra).
 
 \begin{figure}[ht]
 \centerline{
-\includegraphics[width=5.5in]{img/osmusers}}
+\includegraphics[width=4.5in]{img/osmusers}}
 \caption{Az OpenStreetMap regisztrált felhasználóinak száma. Forrás: \cite{osmhistory}.}
 \label{osmusers}
 \end{figure}
 
-A mai napra már annyira megbízható térképpé nőtte ki magát az OpenStreetMap -- hála az egyre több és több önkéntes szerkesztőnek -- hogy több nagyobb (mobil)alkalmazás is az OSM-re alapul. Ilyen például, egy a sok közül, a Maps.me \cite{mapsme} mobilalkalmazás.
+
+
+A mai napra már annyira megbízható térképpé nőtte ki magát az OpenStreetMap -- hála az egyre több és több önkéntes szerkesztőnek -- hogy sok nagyobb (mobil)alkalmazás is az OSM-re épült. Ilyen például, egy a sok közül, a Maps.me \cite{mapsme} mobilalkalmazás.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=5in]{img/oldworcester}
+\includegraphics[width=4in]{img/oldworcester}
 \caption{A Potlatch-ben szerkesztett Worcester térképe 2006-ban. Forrás: \cite{osmhistory}.}
 \label{oldworcester}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=5in]{img/newworcester}
+\includegraphics[width=4in]{img/newworcester}
 \caption{Worcester képe az OpenStreetMap térképen napjainkban. Forrás: \cite{osm}.}
 \label{newworcester}
 \end{figure}
+
+
 
 \newpage
 \chapter{Az alkalmazás (Cop Controller)}
