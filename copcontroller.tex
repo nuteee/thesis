@@ -439,9 +439,14 @@ A C++ egy nyílt, ISO-szabványosított programozási nyelv. Eleinte ez nem így
 \vspace{2mm}
 A C++ egy ``compiled'' (lefordított) nyelv. Ahhoz hogy egy C++ programot le tudjunk futtatni, elsőnek a C++ fordító segítségével platformfüggő futtatható bájt-kódra kell fordítanunk a kódunkat. Ezáltal a C++ a világ egyik leggyorsabb nyelve, ha a kódunk optimalizálva van.
 
+\vspace{2mm}
 A C++ nyelv egyik fő erőssége, hogy a programozótól függ hogy mely paradigmákat követi a probléma megoldása érdekében. A C++ támogatja a procedurális, generikus, illetve az objektum-orientált programozási paradigmákat, sok más paradigmát pedig szintén lehetővé téve ezáltal.
 
 \lstinputlisting[language=C++, caption=A klasszikus ``Hello World!'' C++-ban, label=helloworldcpp]{src/helloworld.cpp}
+
+A \ref{helloworldcpp}. forráskód lefordulását a König lookup-nak (más néven Argument Dependent Lookup (ADL)) köszönhetjük, melynek a használatával a függvények névtereit nem muszáj feltüntetni, amennyiben egy, vagy több, argumentumtípus már meg van határozva a függvény névterében. A König-lookup hiányával egy egyszerű ``Hello World!'' program is első ránézésre bonyolultnak látszik (lásd: \ref{helloworldwithoutkoenig}. forráskód).
+
+\lstinputlisting[language=C++, caption=A klasszikus ``Hello World!'' C++-ban; König-lookup használata nélkül., label=helloworldwithoutkoenig]{src/helloworldwithoutkoenig.cpp}
 
 \subsection{Története}
 \label{cpphistory}
