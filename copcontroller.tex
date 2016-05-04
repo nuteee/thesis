@@ -539,13 +539,6 @@ Végül a fentebb említettek alapján a legrövidebb utat a \ref{oocwcshortestp
 \section{Maven}
 \label{maven}
 
-\begin{figure}[ht]
-\centerline{
-\includegraphics[width=4.5in]{img/mavenlogo}}
-\caption{A Maven logója. Forrás: \cite{mavenlogo}.}
-\label{mavenlogo}
-\end{figure}
-
 A Maven eredetileg egy kísérletként indult azzal a céllal, hogy a Jakarta Turbine projekt \cite{turbine} build folyamatait egyszerűsítsék. Több projekt volt a saját Ant \cite{ant} build fájljaival, melyek alig voltak különbözőek. A Maven célja az (volt), hogy létrehozzon egy szabványosított módszert arra, hogy:
 
 \begin{itemize}
@@ -562,13 +555,6 @@ Ezeket a függőségeket a Maven az általa üzemeltetett Maven Repository Cente
 \newpage
 \section{Git}
 \label{git}
-
-\begin{figure}[ht]
-\centerline{
-\includegraphics[width=3.6in]{img/gitlogo}}
-\caption{A Git logója. Forrás: \cite{gitlogo}.}
-\label{gitlogo}
-\end{figure}
 
 A Git egy verziókezelő rendszer, melyet széles körben használnak a szoftverfejlesztésnél és egyéb verziókövetési feladatoknál. Ez egy elosztott forráskódkezelő rendszer, melynél nagy hangsúlyt kap a sebesség \cite{gitspeed}, az adatok integritása \cite{gitdata}, és az elosztott, nem lineáris munkafolyamatok támogatása. A Gitet eredetileg 2005-ben tervezték és fejlesztették a Linux kernel fejlesztői a kernel fejlesztésének támogatására.
 
@@ -589,6 +575,9 @@ A Gitet elsőnek egy alacsony szintű verziókezelő rendszernek tervezték, ami
 Bár a hallgatók közül a vártnál kevesebben vettek részt a Debreceni térkép kiegészítésében, így is sok olyan bejegyzéssel bővült a térkép, mint például az utak sávjainak a száma, ami fontos lehet a további OOCWC kutatások számára.
 
 \vspace{2mm}
+A továbbiakban a Debreceni Egyetem Informatikai Kar Programtervező Informatikus hallgatóinak a Debrecen térkép minőségének és részletességének a növeléséhez a bevonása várhatóan hagyománnyá fogja kinőni magát.
+
+\vspace{2mm}
 Az OpenStreetMap egy ingyenes, a közösség által szerkesztett térkép. Célja hogy az egész világot minél részletesebben leíró ingyenes térképet szolgáltassanak a szoftverfejlesztők, illetve felhasználók számára. A térképet bárki szerkesztheti aki az oldalukra (\url{www.openstreetmap.org}) regisztrál. 
 
 \vspace{2mm}
@@ -603,31 +592,22 @@ Az önkéntesek egy Java (\ref{java}. fejezet) alapú appleten keresztül tudtak
 \vspace{2mm}
 Az állandó térképszerkesztő szoftverek fejlesztéseinek köszönhetően 2009-től kezdve az OSM egyre jobban elterjedt, a felhasználó- és szerkesztőbázisa pedig exponenciálisan növekedett (lásd: \ref{osmusers}. ábra), ezáltal a térkép részletessége is gyorsan javult (\ref{newworcester}. ábra).
 
-\begin{figure}[ht]
+\begin{figure}[h]
 \centerline{
 \includegraphics[width=4.5in]{img/osmusers}}
 \caption{Az OpenStreetMap regisztrált felhasználóinak száma. Forrás: \cite{osmhistory}.}
 \label{osmusers}
 \end{figure}
 
-
-
 A mai napra már annyira megbízható térképpé nőtte ki magát az OpenStreetMap -- hála az egyre több és több önkéntes szerkesztőnek -- hogy sok nagyobb (mobil)alkalmazás is az OSM-re épült. Ilyen például, egy a sok közül, a Maps.me \cite{mapsme} mobilalkalmazás.
 
-\begin{figure}[ht]
+\begin{figure}[h]
 \centering
-\includegraphics[width=4in]{img/oldworcester}
-\caption{A Potlatch-ben szerkesztett Worcester térképe 2006-ban. Forrás: \cite{osmhistory}.}
-\label{oldworcester}
+\subfigure{\includegraphics[width=5in]{img/oldworcester}\label{oldworcester}}
+\quad
+\subfigure{\includegraphics[width=5in]{img/newworcester}\label{newworcester}}
+\caption{A Potlatch-ben szerkesztett Worcester térképe 2006-ban. Forrás: \cite{osmhistory}, és ugyanaz a térképrészlet napjainkban. Forrás: \cite{osm}.}
 \end{figure}
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=4in]{img/newworcester}
-\caption{Worcester képe az OpenStreetMap térképen napjainkban. Forrás: \cite{osm}.}
-\label{newworcester}
-\end{figure}
-
 
 
 \newpage
