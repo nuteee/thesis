@@ -156,7 +156,7 @@ A fent említettek alapján tisztán látszik, hogy az autóipar szemléletvált
 
 \begin{figure}[ht]
 \centerline{
-\includegraphics[width=5.3in]{img/smartcitylogo}}
+\includegraphics[width=4in]{img/smartcitylogo}}
 \caption{Egy elképzelt okos város vektorgrafikus ábrázolása. Forrás: \cite{smartcitylogo}.}
 \label{smartcitylogo}
 \end{figure}
@@ -174,7 +174,11 @@ Az Smart City Research and Development terület láthatóan fontos szerepet fog 
 Sok tanulmány foglalkozik még azzal, hogy hogyan lehetne egy városnak az ``okosságát'' megmérni (\cite{de2014smart}, \cite{carli2013measuring}). A városok ``okosságáról'' még egy sorrendet is készítettek \cite{giffinger2007smart}. Az okos városokban a vészhelyzetek megoldása is fontos szerepet kap \cite{du2012research}.
 
 \section{A dolgozatban bemutatott alkalmazás}
-A Cop Controller a Robocar World Championship-hez készült megjelenítő, és egyben irányító program is. A program egy Maven (\ref{maven}. fejezet) alapú Java (\ref{java}. fejezet) projekt, melynek a grafikus felhasználói felülete a Swing (\ref{swing}. fejezet), és a JXMapViewer (\ref{jxmapviewer}. fejezet) segítségével valósult meg. 
+
+A Cop Controller a Robocar World Championship-hez készült megjelenítő, és egyben irányító program is. Azért választott ezt az alkalmazás létrehozását, mert hiányoltam a Robocar World Championshipből a felhasználó valós-idejű beavatkozásának a lehetőségét.
+
+\vspace{2mm}
+A program egy Maven (\ref{maven}. fejezet) alapú Java (\ref{java}. fejezet) projekt, melynek a grafikus felhasználói felülete a Swing (\ref{swing}. fejezet), és a JXMapViewer (\ref{jxmapviewer}. fejezet) segítségével valósult meg. 
 
 \vspace{2mm}
 Az alkalmazás valós-időben mutatja meg a felhasználónak a verseny aktuális állapotát a szerver által küldött információk alapján. A felhasználó képes a saját rendőr-ágenseit kiválasztani, és irányítani őket a látott információk alapján.
@@ -647,7 +651,7 @@ Az állandó térképszerkesztő szoftverek fejlesztéseinek köszönhetően 200
 
 \begin{figure}[h]
 \centerline{
-\includegraphics[width=4.5in]{img/osmusers}}
+\includegraphics[width=5in]{img/osmusers}}
 \caption{Az OpenStreetMap regisztrált felhasználóinak száma. Forrás: \cite{osmhistory}.}
 \label{osmusers}
 \end{figure}
@@ -669,7 +673,7 @@ A mai napra már annyira megbízható térképpé nőtte ki magát az OpenStreet
 
 \begin{figure}[ht]
 \centerline{
-\includegraphics[width=5in]{img/copselected}}
+\includegraphics[width=4.4in]{img/copselected}}
 \caption{Pillanatkép a rendszer ``Police Edition'' változatának a projekt szerinti módosításával (lásd: \ref{theapp}. fejezet). A térkép az OSM egy részlete, Debrecen, Hajdú-Bihar Megye, Magyarország. A megjelenítést a JXMapViewer2 \cite{jxmapv} biztosítja. A térképen a routine car rózsaszínnel, a gengszter ágensek pirossal (smart car), a rendőrágensek (guided car) kékkel jelölve. Az éppen kiválasztott rendőr-ágens melyet éppen irányítunk pedig el van látva a ``SELECTED'' felirattal. Forrás: \cite{infocomjournal} 
 \label{police}}
 \end{figure}
