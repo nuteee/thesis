@@ -1,6 +1,7 @@
 try {
     /* ........ */
     
+    std::shared_ptr<SmartCar> cop = m_smart_cars_map[cl.get_id()];
     long unsigned int from = cop->from();
     long unsigned int to = carLexer.get_to();
     if ( inner_route( cop->get_route(), from, to ) ) { 

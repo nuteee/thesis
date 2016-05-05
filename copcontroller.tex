@@ -138,7 +138,7 @@ Debrecen
 
 \begin{figure}[ht]
 \centerline{
-\includegraphics[width=6in]{img/googleauto}}
+\includegraphics[width=4in]{img/googleauto}}
 \caption{A Google által fejlesztett robotautó. Forrás: \cite{googlecarimage}.}
 \label{googleauto}
 \end{figure}
@@ -149,14 +149,14 @@ A közelmúltban nagy mértékű fejlődést vehettünk észre az autógyártás
 Az elkövetkező éveket azonban várhatóan az autonóm autók nagy mértékű megjelenése és elterjedése váltja fel. Ezek az autók mellett nemrég láthattuk a Tesla új modelljének a bemutatóját is, mely ugyancsak erősíti a feltevést, miszerint az elektromos hajtású, illetve az úgynevezett ``hibrid'' hajtású kocsik előtt áll a jövő. Elektromos hajtású kocsikat manapság is láthatunk már az utcákon. Ezeket könnyen felismerhetjük a zöld hátterű rendszámtáblájukról.
 
 \vspace{2mm}
-A Drive.ai a 13. cég akik jogosítványt kaptak az autonóm kocsik teszteléséhez Kalifornia publikus utcáin. A cég az autonóm autók továbbfejlesztésén dolgozik úgy, hogy a mély-tanulást (deep-learning) alkalmazza robotautókra. Ez azért kiemelkedően fontos, mert az autonóm kocsik fejlesztésében a kemény rész a szélsőséges esetek (edge cases) megoldása, tehát hogy mit tegyen az autó amikor hirtelen csúszós lesz az út, vagy éppen rosszak a látásviszonyok. Jelenleg az autonóm kocsik fejlesztői különböző szabályokat programoznak be ezekre az esetekre, azonban a mély-tanulás megközelítésével a robotautó megtanulja hogyan reagáljon a különböző esetekre azáltal, hogy a kapott adat teljes egészét próbálja megérteni, és a már megtanult adat alapján reagál rá. \cite{driveai}.
+A Drive.ai a 13. cég akik jogosítványt kaptak az autonóm kocsik teszteléséhez Kalifornia publikus utcáin. A cég az autonóm autók továbbfejlesztésén dolgozik úgy, hogy a mély-tanulást (deep-learning) alkalmazza robotautókra. Ez azért kiemelkedően fontos, mert az autonóm kocsik fejlesztésében a kemény rész a szélsőséges esetek (edge cases) megoldása, tehát hogy mit tegyen az autó amikor hirtelen csúszós lesz az út, vagy éppen rosszak a látásviszonyok. Jelenleg az autonóm kocsik fejlesztői különböző szabályokat programoznak be ezekre az esetekre, azonban a mély-tanulás megközelítésével a robotautó megtanulja hogyan reagáljon a különböző esetekre azáltal, hogy a kapott adat teljes egészét próbálja megérteni, és a már megtanult adat alapján reagál rá \cite{driveai}.
 
 \vspace{2mm}
 A fent említettek alapján tisztán látszik, hogy az autóipar szemléletváltás előtt áll. A nem újrahasznosítható energiaforrásokon alapuló motorokat és a vezetői élményt kezdi lassan felváltani a hosszabb távon fenntartható, újrahasznosítható energiaforrást használó motorokkal hajtott autonóm gépkocsik, mellyel az utazáshoz a pihentető időtöltés vízióját próbálják hozzárendelni.
 
 \begin{figure}[ht]
 \centerline{
-\includegraphics[width=6in]{img/smartcitylogo}}
+\includegraphics[width=5.3in]{img/smartcitylogo}}
 \caption{Egy elképzelt okos város vektorgrafikus ábrázolása. Forrás: \cite{smartcitylogo}.}
 \label{smartcitylogo}
 \end{figure}
@@ -172,6 +172,13 @@ Az Smart City Research and Development terület láthatóan fontos szerepet fog 
 
 \vspace{2mm}
 Sok tanulmány foglalkozik még azzal, hogy hogyan lehetne egy városnak az ``okosságát'' megmérni (\cite{de2014smart}, \cite{carli2013measuring}). A városok ``okosságáról'' még egy sorrendet is készítettek \cite{giffinger2007smart}. Az okos városokban a vészhelyzetek megoldása is fontos szerepet kap \cite{du2012research}.
+
+\section{A dolgozatban bemutatott alkalmazás}
+A Cop Controller a Robocar World Championship-hez készült megjelenítő, és egyben irányító program is. A program egy Maven (\ref{maven}. fejezet) alapú Java (\ref{java}. fejezet) projekt, melynek a grafikus felhasználói felülete a Swing (\ref{swing}. fejezet), és a JXMapViewer (\ref{jxmapviewer}. fejezet) segítségével valósult meg. 
+
+\vspace{2mm}
+Az alkalmazás valós-időben mutatja meg a felhasználónak a verseny aktuális állapotát a szerver által küldött információk alapján. A felhasználó képes a saját rendőr-ágenseit kiválasztani, és irányítani őket a látott információk alapján.
+
 
 \chapter{A Robocar World Championship (OOCWC)}
 \label{oocwc}
@@ -203,7 +210,7 @@ Ez alapján a rendszer egyes elemei:
 A rendszer egyrészt egy kutatási platformot kínál forgalomelemzésre, szimulációkra, másrészt pedig egy érdekes versenyzési platformot nyújt.
 
 \vspace{2mm}
-A verseny célja az, hogy találjuk meg a lehető legjobb forgalomirányító algoritmust. Az OOCWC már több sikeres versenyen is túl van a Debreceni Egyetem Informatikai Karán \cite{competitions}. Gyakori, hogy egy kutatás által létrejött rendszerre versenyt szerveznek a felhasználók körében. Erre egy jó példa az mesterséges intelligencia (AI - Artificial Intelligence) területén a RoboCup \cite{robocup}.
+A verseny célja az, hogy a lehető legjobb forgalomirányító algoritmusokat találjuk meg. Az OOCWC már több sikeres versenyen is túl van a Debreceni Egyetem Informatikai Karán \cite{competitions}. Gyakori, hogy egy kutatás által létrejött rendszerre versenyt szerveznek a felhasználók körében. Erre egy jó példa az mesterséges intelligencia (AI - Artificial Intelligence) területén a RoboCup \cite{robocup}.
 
 \vspace{2mm}
 Fontos megemlíteni, hogy a Robocar World Cup kiválóan alkalmazkodik a különböző esetekre. Az oktatás és kutatások támogatására került kifejlesztésre a ``Police Edition'' (egy pillanatkép ebből a változatból a \ref{police}. ábrán látható). A cél, hogy rendőr-ágensekkel, melyeket a felhasználó által megírt irányító algoritmus vezérel, minél több gengszter-ágenst kapjunk el.
@@ -216,6 +223,29 @@ A rendszer ``Police Edition'' változatából készíthetnek egy saját fork-ot 
 
 \vspace{2mm}
 A rendszerről további információk olvashatóak a \cite{infocomjournal} közleményben.
+
+\section{Versenyek}
+\label{championships}
+
+A Debreceni Egyetem Informatikai Karán már több Robocar World Championship, Police Edition verseny is lezajlott. 
+
+\vspace{2mm}
+Ahhoz hogy valaki egy ilyen versenyen elindulhasson, elsőnek forkolnia kell az OOCWC repository-ját \cite{oocwcrepo}, majd elkészítenie a saját irányító algoritmusát a rendőr-ágensei számára. Ezután fel kell tölteni egy videót, amiben a meghirdetett poszterben foglalt kritériumoknak megfelelően elindított szimulációban 1 rendőrrel teljesítjük az adott idő alatt meghirdetett gengszter elkapási limitet. Ez a limit jelenleg 7 vagy 8 szokott lenni. Ilyen poszterre láthatunk példát a \url{http://justine.inf.unideb.hu/2015/Europe/Hungary/Debrecen/2/Announcement/poster.pdf} linken, ami a ``Debrecen 2'' versenynek a meghirdetési posztere. Az ilyen poszteren láthatunk minden fontos információt a versennyel kapcsolatban.
+
+\vspace{2mm}
+Miután a videót sikeresen feltöltöttük, létre kell hoznunk egy Team Qualification Paper-t (TQP-t), amivel hivatalosan is tudunk jelentkezni a versenyre. A TQP-t a forkolt \url{doc/qualification} mappában könnyen el tudjuk készíteni az ott lévő példa segítségével. Ahhoz hogy hivatalosan kvalifikáljunk a versenyre, ezt a dokumentumot kell eljuttatni a szervezőnek.
+
+\vspace{2mm}
+A versenyen általában 2 csapat mérkőzik meg egymás ellen 10-10 rendőr-ágenst irányítva. A komolyabb irányító algoritmusok itt tudnak megmutatkozni. A csapatmérkőzéseken természetesen az nyer, aki több gengsztert tudott elkapni az előre definiált idő alatt az ellenfelénél, az egész verseny győztesét pedig a verseny előtt definiáltak alapján kapjuk meg a lejátszott mérkőzések után.
+
+\vspace{2mm}
+Debrecenben eddig 4 verseny volt megszervezve, amelyből 3 dokumentálva is lett az elejétől a végéig, illetve a ``Debrecen 5'' szervezése jelenleg is tart. Én az első 2 versenyen indultam, ahol az első versenyen 1. helyezést értem el, a 2. versenyen pedig 3. helyen végeztem.
+
+\vspace{2mm}
+A korábbi (és a jövőbeli) versenyek dokumentumait a következő linken érjük el: \url{http://justine.inf.unideb.hu/2015/Europe/Hungary/Debrecen/}
+
+\vspace{2mm}
+A csapatok számát tekintve míg ``Debrecen 2'' versenyen összesen 5-en indultak (köztük én is), a ``Debrecen 3''-on már 43 csapat kvalifikált! Ebből tisztán látszik hogy a Robocar World Championship-re kifejezetten magas érdeklődés mutatható ki az elkövetkezendő évekre.
 
 \section{A rendszer elindítása}
 \label{howtostart}
@@ -317,7 +347,24 @@ Az eredeti parancs a következőképp néz ki:
 <route [a csomopontok szama: N] [rendor-agens ID] [N darab csomopont]>
 \end{lstlisting}
 
-Ez a parancs a \ref{originalroutingsrc}. forráskódrészleten látható módon lesz feldolgozva.
+Ez a parancs elsőként a CarLexer által lesz feldolgozva a \ref{originalcarlexer}. forráskódrészletben látható módon, ahol a CarLexer elmenti a parancsból kinyert adatokat.
+
+\lstinputlisting[language=C++, caption=A CarLexer forráskód részlete az eredeti routing parancsra, label=originalcarlexer]{src/originalcarlexer.cpp}
+
+\vspace{2mm}
+Az argumentumok a következők:
+\begin{itemize}
+\item \url{{ROUTE}} -- A forráskódban fentebb definiált értékre hivatkozik.
+\item \url{{WS}} -- A szóköz karaktert jelenti.
+\item \url{{INT}} -- Egy egész számot vár itt.
+\item \url{({WS}{INT})*} -- Bármennyi ismétlődést vár (lehet 0 is) a szóköz és egy egész szám párosából.
+\end{itemize}
+
+\vspace{2mm}
+Látható hogy elsőként a szerverhez beérkezett parancs validálása a CarLexer által történik, mivel ha a parancs szintaxisa nem egyezik a CarLexer által definiáltakkal, úgy a parancs fel se lesz dolgozva. A \ref{originalcarlexer}. forráskódrészletben látható továbbá hogy a CarLexer által várt szintaxisnak eleget tesz a fentebb említett route parancs szintaxisa.
+
+\vspace{2mm}
+Miután a CarLexer feldolgozta a parancsot az irányítás a traffic szerver kezébe kerül, ami kiolvassa a CarLexer által feldolgozott adatokat, és az alapján irányítja a megfelelő rendőrt. Ezt a \ref{originalroutingsrc}. forráskódrészletben láthatjuk.
 
 \lstinputlisting[language=C++, caption=Az eredeti routing forráskód részlete, label=originalroutingsrc]{src/originalroutingcmd.cpp}
 
@@ -332,9 +379,15 @@ Ennek a változtatásnak a bevezetésével úgy vélem hogy egy új lehetőség 
 \vspace{2mm}
 Az új parancs a következőképpen néz ki:
 \begin{lstlisting}
-<inner_route [rendor-agens ID] [A cel csomopont]>
+<innerroute [rendor-agens ID] [A cel csomopont]>
 \end{lstlisting}
 
+\vspace{2mm}
+Mint ahogy az eredeti példánál, elsőnek itt is a CarLexer dolgozza fel a kapott parancsot, azonban észrevehető a \ref{originalcarlexer}. forráskódrészlet és a \ref{newcarlexer}. forráskódrészlet közti különbségben hogy az új parancs már nem követeli meg a teljes utat a parancstól.
+
+\lstinputlisting[language=C++, caption=A CarLexer forráskód részlete az új routing parancsra, label=newcarlexer]{src/newcarlexer.cpp}
+
+\vspace{2mm}
 A parancs feldolgozása után a traffic szerver gondoskodik a rendőr-ágens irányításáról. Lásd: \ref{newroutingsrc}. forráskódrészlet.
 
 \lstinputlisting[language=C++, caption=Az új routing forráskód részlete, label=newroutingsrc]{src/newroutingcmd.cpp}
@@ -482,7 +535,7 @@ A BGL több kereső algoritmussal is szolgál. A teljesség igénye nélkül eze
 \item \url{Bellman-Ford Shortest Paths}
 \end{itemize}
 
-Ezek közül az OOCWC a Dijkstra's Shortest Paths, és a Bellman-Ford Shortest Paths algrotimusokat implementálja, azonban
+Ezek közül az OOCWC a Dijkstra's Shortest Paths, és a Bellman-Ford Shortest Paths algrotimusokat implementálja.
 
 \subsubsection{A Robocar World Championship és a Boost Graph Library}
 \label{oocwcbgl}
@@ -569,7 +622,7 @@ A Gitet elsőnek egy alacsony szintű verziókezelő rendszernek tervezték, ami
 \label{osm}
 
 \vspace{2mm}
-2015. novemberében a Debreceni Egyetem Informatikai Karán Jeszenszky Péter adjunktus indított egy ``kampányt'' a részletesebb Debrecen térkép érdekében. A megvalósítás a hallgatókat bevonva önkéntes alapon történt a HTML/XML kurzus keretében, ahol az OSM XML kapcsán került bemutatásra a projekt, mint egy XML alkalmazás, mintegy 150 fő számára. A hallgatók motiválásképp a sikeres szerkesztésekért extra pontokat kaptak a félév végi érdemjegybe.
+2015. novemberében a Debreceni Egyetem Informatikai Karán Dr. Jeszenszky Péter adjunktus indított egy ``kampányt'' a részletesebb Debrecen térkép érdekében. A megvalósítás a hallgatókat bevonva önkéntes alapon történt a HTML/XML kurzus keretében, ahol az OSM XML kapcsán került bemutatásra a projekt, mint egy XML alkalmazás, mintegy 150 fő számára. A hallgatók motiválásképp a sikeres szerkesztésekért extra pontokat kaptak a félév végi érdemjegybe.
 
 \vspace{2mm}
 Bár a hallgatók közül a vártnál kevesebben vettek részt a Debreceni térkép kiegészítésében, így is sok olyan bejegyzéssel bővült a térkép, mint például az utak sávjainak a száma, ami fontos lehet a további OOCWC kutatások számára.
@@ -616,7 +669,7 @@ A mai napra már annyira megbízható térképpé nőtte ki magát az OpenStreet
 
 \begin{figure}[ht]
 \centerline{
-\includegraphics[width=6in]{img/copselected}}
+\includegraphics[width=5in]{img/copselected}}
 \caption{Pillanatkép a rendszer ``Police Edition'' változatának a projekt szerinti módosításával (lásd: \ref{theapp}. fejezet). A térkép az OSM egy részlete, Debrecen, Hajdú-Bihar Megye, Magyarország. A megjelenítést a JXMapViewer2 \cite{jxmapv} biztosítja. A térképen a routine car rózsaszínnel, a gengszter ágensek pirossal (smart car), a rendőrágensek (guided car) kékkel jelölve. Az éppen kiválasztott rendőr-ágens melyet éppen irányítunk pedig el van látva a ``SELECTED'' felirattal. Forrás: \cite{infocomjournal} 
 \label{police}}
 \end{figure}
@@ -653,7 +706,7 @@ Miután ``Next''-re kattintottunk meg kell adnunk a relatív elérési útját a
 
 \begin{figure}[ht]
 \centerline{
-\includegraphics[width=6in]{img/importmavenproject2}}
+\includegraphics[width=5in]{img/importmavenproject2}}
 \caption{Maven project importálása Eclipse IDE-be. 2. rész.}
 \label{importmaven2}
 \end{figure}
@@ -675,6 +728,9 @@ Az aktuális állást egyrészt a főképernyőn lehet látni, másrészt az alk
 
 \vspace{2mm}
 Ezt az információt a traffic szervertől kapja az alkalmazás egy socketen keresztül. Ebben az információhalmazban benne van az összes autó információja -- beleértve a semleges autókat -- is.
+
+\vspace{2mm}
+Erre példát a \ref{police}. ábrán láthatunk.
 
 \subsection{Rendőrök és gengszterek hozzáadása}
 \label{addcops}
@@ -782,7 +838,6 @@ Ahogy láthatjuk ezek a hátrányok az ember és a mesterséges intelligencia k�
 \item real-time versenyek, ahol a rendőröket mindenki maga irányítja, 
 \item normális versenyek, ahol a cél továbbra is a jobb mesterséges intelligencia fejlesztése, mint ahogy azt eddig is láthattuk az OOCWC kapcsán.
 \end{enumerate}
-TODO
 
 \newpage
 \addcontentsline{toc}{chapter}{Irodalomjegyzék}
